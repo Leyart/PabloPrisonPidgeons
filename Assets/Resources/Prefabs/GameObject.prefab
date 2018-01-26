@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4053519836653340}
   - component: {fileID: 212338781215328044}
+  - component: {fileID: 95227065965475268}
   m_Layer: 0
   m_Name: pigeon
   m_TagString: Untagged
@@ -69,6 +70,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95227065965475268
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784868454778560}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b74f2fe4d1e04ffdb0d645ec2afaef2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &212338781215328044
 SpriteRenderer:
   m_ObjectHideFlags: 1
