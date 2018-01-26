@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class KeyboardTyper : MonoBehaviour {
@@ -12,9 +13,11 @@ public class KeyboardTyper : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.anyKeyDown) {
-			string[] characters = Input.inputString.Split();
-			foreach(string c in characters) {
-				Debug.Log("Pressed " + c);
+			char[] characters = Input.inputString.ToCharArray();
+			foreach(char c in characters) {
+				if (Regex.Match(c.ToString(), "[a-zA-Z]").Success) {
+					Debug.Log("Pressed " + c);
+				}
 			}
 		}
 	}
