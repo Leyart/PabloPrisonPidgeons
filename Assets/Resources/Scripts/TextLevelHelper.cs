@@ -6,7 +6,7 @@ public class TextLevelHelper
 {
 	public static string basePath {
 		get {
-			return "Resources/Levels/";
+			return "Assets/Resources/Levels/";
 		}
 	}
 	int level;
@@ -23,11 +23,11 @@ public class TextLevelHelper
 
 	static string[] GetPaths() { 
 		string[] toReturn = new string[5];
-		toReturn.SetValue(basePath+"1.txt",1);
-		toReturn.SetValue(basePath+"2.txt",2);
-		toReturn.SetValue(basePath+"3.txt",3);
-		toReturn.SetValue(basePath+"4.txt",4);
-		toReturn.SetValue(basePath+"5.txt",5);
+		toReturn.SetValue(basePath+"1.txt",0);
+		toReturn.SetValue(basePath+"2.txt",1);
+		toReturn.SetValue(basePath+"3.txt",2);
+		toReturn.SetValue(basePath+"4.txt",3);
+		toReturn.SetValue(basePath+"5.txt",4);
 		return toReturn;
 	}
 
@@ -53,5 +53,9 @@ public class TextLevelHelper
 
 	public string[] GetTokens() {
 		return tokens;
+	}
+
+	public string GetFullText() {
+		return fullText;
 	}
 }
