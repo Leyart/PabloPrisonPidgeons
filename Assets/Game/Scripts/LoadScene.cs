@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour {
 	
 	 void Start() {
-		Button button = gameObject.GetComponent<Button>();
-		button.onClick.AddListener (OnClick);
+	//	Button button = gameObject.GetComponent<Button>();
+	//	button.onClick.AddListener (OnClick);
 	}
 
   	void OnClick() {
