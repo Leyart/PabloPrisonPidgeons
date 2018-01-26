@@ -13,7 +13,8 @@ public class StringReader : MonoBehaviour {
     private string sLeft;
 
     void Awake() {
-        sLeft = s;
+		TextLevelHelper levelHelper = new TextLevelHelper (Random.Range (1, 5));
+		sLeft = s = levelHelper.GetTokens()[0];
     }
 
     protected void MatchCharacter(char c) {
