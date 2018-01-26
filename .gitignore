@@ -32,3 +32,5 @@ ehthumbs.db
 sysinfo.txt
 *.stackdump
 .collabignore
+Library/
+Temp/
