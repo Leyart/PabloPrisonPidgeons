@@ -16,6 +16,7 @@ public class TextLevelHelper
 
 	public TextLevelHelper(int level)
 	{
+		this.level = level;
 		textPaths = TextLevelHelper.GetPaths ();
 		fullText = this.GetLevelText (level);
 		tokens = TextLevelHelper.TokenizeText (fullText);
