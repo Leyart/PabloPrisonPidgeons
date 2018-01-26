@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KeyboardTyper : MonoBehaviour {
 
+	public class KeyTypedEvent : UnityEvent<char> {}
+
+	public static KeyTypedEvent keyTyped;
+
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+		keyTyped = new KeyTypedEvent();
 	}
 	
 	// Update is called once per frame
@@ -16,7 +21,7 @@ public class KeyboardTyper : MonoBehaviour {
 			char[] characters = Input.inputString.ToCharArray();
 			foreach(char c in characters) {
 				if (Regex.Match(c.ToString(), "[a-zA-Z]").Success) {
-					Debug.Log("Pressed " + c);
+					keyTyped.Invoke(c);
 				}
 			}
 		}
