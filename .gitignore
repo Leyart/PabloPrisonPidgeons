@@ -34,3 +34,6 @@ sysinfo.txt
 .collabignore
 Library/
 Temp/
+# Builds
+*.apk
+*.unitypackage
