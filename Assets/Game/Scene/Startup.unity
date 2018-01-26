@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 302461181}
   - component: {fileID: 302461180}
   - component: {fileID: 302461179}
+  - component: {fileID: 302461183}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -268,6 +269,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &302461183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 302461178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5818d0532304d7aaebf5275881c078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pidgeon: {fileID: 1049222922660260, guid: 254373023fc9540e7aa28fc026903b1c, type: 2}
+  pidgeonHolder: {fileID: 693348602}
 --- !u!1 &449545041
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +395,6 @@ GameObject:
   - component: {fileID: 825547101}
   - component: {fileID: 825547100}
   - component: {fileID: 825547099}
-  - component: {fileID: 825547102}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -482,19 +495,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 825547097}
---- !u!114 &825547102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 825547097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f5818d0532304d7aaebf5275881c078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pidgeon: {fileID: 1049222922660260, guid: 254373023fc9540e7aa28fc026903b1c, type: 2}
-  pidgeonHolder: {fileID: 693348602}
 --- !u!1 &1831329670
 GameObject:
   m_ObjectHideFlags: 0

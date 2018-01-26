@@ -8,20 +8,16 @@ public class LoadScene : MonoBehaviour {
 	public GameObject pidgeon;
 	public GameObject pidgeonHolder;
 	 void Start() {
-	//	Button button = gameObject.GetComponent<Button>();
-	//	button.onClick.AddListener (OnClick);
-	}
-
-  	void OnClick() {
-		SceneManager.LoadScene ("game");
 		loadGameLevel (1);
 	}
+
+  
 	void loadGameLevel(int level ) {
 		TextLevelHelper levelHelper = new TextLevelHelper(level);
 		string [] tokens =  levelHelper.GetTokens ();
 		for (int i = 0; i < tokens.Length; i++) {
 			//Transform identity = new Transform ();
-			Vector3 position = new Vector3 (10 * i, 10 * i, 0);
+			Vector3 position = new Vector3 (i, i, 0);
 			GameObject instance = Instantiate(pidgeon, position,  Quaternion.identity);
 			instance.transform.SetParent (pidgeonHolder.transform);
 			pidgeons.Add (instance);
