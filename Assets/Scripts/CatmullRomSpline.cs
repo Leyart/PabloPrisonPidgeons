@@ -5,9 +5,11 @@ using System.Collections;
 public class CatmullRomSpline : MonoBehaviour
 {
 	//Has to be at least 4 points
-	 ArrayList controlPointsList;
+	ArrayList controlPointsList;
 
-	void Start(){
+	public ArrayList path = new ArrayList();
+
+	void Awake(){
 		controlPointsList = new ArrayList();
 		Vector2 posLB = Camera.main.ViewportToWorldPoint (new Vector2 (0, 0));
 		Vector2 posRU = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
@@ -20,7 +22,17 @@ public class CatmullRomSpline : MonoBehaviour
 		controlPointsList.Add (pointEnd);
 		Vector2 pointEndOffset = new Vector2 (posRU.x+10,posLB.y/2);
 		controlPointsList.Add (pointEndOffset);
-		// CreateLine ();
+		CreateLine ();
+	}
+
+	void OnDrawGizmos() {
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawLine((Vector2) controlPointsList [1], (Vector2) path[0]);
+		
+		for (int i = 1; i < path.Count; i++) {
+			//Draw this line segment
+			Gizmos.DrawLine((Vector2) path[i - 1], (Vector2) path[i]);
+		}
 	}
 
 	//Display without having to press play
@@ -70,9 +82,8 @@ public class CatmullRomSpline : MonoBehaviour
 			//Find the coordinate between the end points with a Catmull-Rom spline
 			Vector2 newPos = GetCatmullRomPosition(t, p0, p1, p2, p3);
 
-			//Draw this line segment
-			Gizmos.DrawLine(lastPos, newPos);
-
+			Debug.Log(newPos);
+			path.Add(newPos);
 			//Save this pos so we can draw the next line segment
 			lastPos = newPos;
 		}
