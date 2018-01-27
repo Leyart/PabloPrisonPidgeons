@@ -11,11 +11,22 @@ public class KeyboardSpeaker : MonoBehaviour {
 		KeyboardTyper.keyTyped.AddListener((c) => {
 			string text = textMesh.text;
 			text = text + c;
-			if (text.Length > 5) {
-				text = text.Substring(1, 5);
+			if (text.Length > 10) {
+				text = text.Substring(1, 10);
 			}
 			textMesh.text = text;
 		});
+
+		InvokeRepeating("AddSpaces", 0.3f, 0.3f);
+	}
+
+	void AddSpaces() {
+		TextMesh textMesh = GetComponentInChildren<TextMesh>();
+		string text = textMesh.text + " ";
+		if (text.Length > 10) {
+			text = text.Substring(1, 10);
+		}
+		textMesh.text = text;
 	}
 	
 }
