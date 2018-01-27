@@ -552,10 +552,8 @@ MonoBehaviour:
   POST_TWEET_Y: 0
   POST_TWEET_WIDTH: 0
   POST_TWEET_HEIGHT: 0
-  CONSUMER_KEY: 
-  CONSUMER_SECRET: 
-  hashtag: {fileID: 0}
-  hashtagNum: {fileID: 0}
+  CONSUMER_KEY: 3mqIl1zzTGTnmxp6r0PoKLfVN
+  CONSUMER_SECRET: sV9meKG5iXQSmEaTTH2vzXRal7q86QM5cVjPVerVzzwepymjQh
 --- !u!82 &469053651
 AudioSource:
   m_ObjectHideFlags: 0
@@ -976,8 +974,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105056501}
-        m_MethodName: StartGame
+      - m_Target: {fileID: 469053647}
+        m_MethodName: setActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

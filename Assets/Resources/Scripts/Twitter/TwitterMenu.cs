@@ -36,9 +36,6 @@ public class TwitterMenu : MonoBehaviour
     public string CONSUMER_KEY;
     public string CONSUMER_SECRET;
 
-    public InputField hashtag;
-    public InputField hashtagNum;
-
     // You need to save access token and secret for later use.
     // You can keep using them whenever you need to access the user's Twitter account. 
     // They will be always valid until the user revokes the access to your application.
@@ -54,6 +51,9 @@ public class TwitterMenu : MonoBehaviour
     string m_Tweet = "Please enter your tweet here.";
 	bool isAuthenticated = false;
 	bool isActive = false;
+
+	string hashtag;
+	int hashtagNum;
 
 	// Use this for initialization
 	void Start() 
@@ -144,8 +144,8 @@ public class TwitterMenu : MonoBehaviour
 		}
     }
 
-	public void setActive(bool value) {
-		this.isActive = value;
+	public void setActive() {
+		this.isActive = !this.isActive;
 	}
 
 
@@ -235,7 +235,7 @@ public class TwitterMenu : MonoBehaviour
 
     public void StartGetHashtag()
     {
-        string text = hashtag.text;
+        string text = hashtag;
 
         if( string.IsNullOrEmpty(text) )
         {
@@ -243,7 +243,7 @@ public class TwitterMenu : MonoBehaviour
             return;
         }
 
-        int num = Convert.ToInt32( hashtagNum.text );
+        int num = Convert.ToInt32( hashtagNum );
 
         if( num < 1 )
         {
@@ -251,7 +251,7 @@ public class TwitterMenu : MonoBehaviour
             return;
         }
 
-        StartCoroutine(Twitter.API.GetHashtag(hashtag.text, num, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
+        StartCoroutine(Twitter.API.GetHashtag(hashtag, num, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
                        new Twitter.GetTimelineCallback(this.OnGetHashtag)));
     }
 }
