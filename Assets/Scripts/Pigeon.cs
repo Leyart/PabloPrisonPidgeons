@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 
 	public class PigeonArrivedEvent : UnityEvent<string> {}
-	public class PigeonKilledEvent : UnityEvent<string, Pigeon> {};
+	public class PigeonKilledEvent : UnityEvent<string> {};
 	public class PigeonHitEvent : UnityEvent<int> {};
 
 	public static PigeonArrivedEvent PigeonArrived = new PigeonArrivedEvent();
@@ -25,7 +25,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 
 	void Awake() {
 		reader = this.GetComponent<StringReader>();
-		speed = Random.Range(0.1f, 0.15f);
+		speed = Random.Range(0.10f, 0.20f);
 
 		reader.WordCompleted.AddListener(Kill);
 		reader.WordPartial.AddListener((word, partial) => {
@@ -74,7 +74,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	}
 
 	public void Kill() {
-		PigeonKilled.Invoke(reader.Word, this);
+		PigeonKilled.Invoke(reader.Word);
 		Destroy (gameObject);
 	}
 }
