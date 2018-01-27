@@ -192,12 +192,12 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904525246727330}
-  m_Text: testdfasd
+  m_Text: There
   m_OffsetZ: 0
   m_CharacterSize: 0.3
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 0
   m_FontStyle: 0
@@ -217,7 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab64c4d8912614b38879f05f44b9fe9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s: test
 --- !u!114 &114595485636773776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,7 +231,6 @@ MonoBehaviour:
   speed: 0
   rotation: {x: 0, y: 0, z: 0}
   text: 
-  path: {fileID: 0}
 --- !u!114 &114758136881832284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,7 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e953da44d126464ebd8232bec0c624f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPointsList: []
 --- !u!212 &212338781215328044
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -310,6 +307,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: -0.5}
+  m_AnchoredPosition: {x: -0.43, y: -0.92}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

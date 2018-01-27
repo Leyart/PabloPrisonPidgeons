@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class StringReader : MonoBehaviour {
 
+    private static readonly Regex allButTextRegex = new Regex("[^a-zA-Z]");
     private string s;
     private string sLeft;
 	public bool isCompleted {
@@ -19,10 +20,12 @@ public class StringReader : MonoBehaviour {
             if (sLeft.Length > 1) {
                 sLeft = sLeft.Substring(1);
                 Debug.Log("Remaining: " + sLeft);
+                GetComponentInChildren<TextMesh>().text = sLeft;
             } else {
                 // Trigger completed
                 Debug.Log("word " + s + " completed!");
 				isCompleted = true;
+                GetComponent<Pigeon>().Kill();
             }
         }
     }
@@ -33,7 +36,8 @@ public class StringReader : MonoBehaviour {
 	}
 
 	public void Enable (string text) {
-		s = sLeft = text.ToLower();
+        s = sLeft = allButTextRegex.Replace(text.ToLower(),"");;
+        GetComponentInChildren<TextMesh>().text = sLeft;
 		KeyboardTyper.keyTyped.AddListener(MatchCharacter);
 	}
     
