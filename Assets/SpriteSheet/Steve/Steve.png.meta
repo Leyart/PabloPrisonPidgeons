@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c8b16c70ecfc248dbb32d130d5e4a200
-timeCreated: 1517048474
+timeCreated: 1517061099
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,10 @@ TextureImporter:
     21300002: Pepe_1
     21300004: Pepe_2
     21300006: Pepe_3
+    21300008: Steve_0
+    21300010: Steve_1
+    21300012: Steve_2
+    21300014: Steve_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -124,12 +128,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pepe_0
+      name: Steve_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 26
-        width: 80
+        x: 0
+        y: 1
+        width: 52
         height: 184
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -138,12 +142,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pepe_1
+      name: Steve_1
       rect:
         serializedVersion: 2
-        x: 123
-        y: 25
-        width: 80
+        x: 110
+        y: 0
+        width: 52
         height: 184
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,12 +156,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pepe_2
+      name: Steve_2
       rect:
         serializedVersion: 2
-        x: 233
-        y: 25
-        width: 80
+        x: 220
+        y: 0
+        width: 52
         height: 184
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,12 +170,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pepe_3
+      name: Steve_3
       rect:
         serializedVersion: 2
-        x: 346
-        y: 25
-        width: 80
+        x: 333
+        y: 0
+        width: 52
         height: 184
       alignment: 0
       pivot: {x: 0, y: 0}
