@@ -6,13 +6,19 @@ using UnityEngine.Events;
 
 public class StringReader : MonoBehaviour {
 
+    public class WordCompletedEvent : UnityEvent {}
+
+    public WordCompletedEvent WordCompleted = new WordCompletedEvent();
+
     private static readonly Regex allButTextRegex = new Regex("[^a-zA-Z]");
     private string s;
     private string sLeft;
-	public bool isCompleted {
-		get;
-		set;
-	}
+
+    public string Word {
+        get {
+            return s;
+        }
+    }
 
     protected void MatchCharacter(char c) {
         if (sLeft.StartsWith(c.ToString())) {
@@ -24,16 +30,10 @@ public class StringReader : MonoBehaviour {
             } else {
                 // Trigger completed
                 Debug.Log("word " + s + " completed!");
-				isCompleted = true;
-                GetComponent<Pigeon>().Kill();
+                WordCompleted.Invoke();
             }
         }
     }
-
-	// Use this for initialization
-	void Start () {
-		isCompleted = false;
-	}
 
 	public void Enable (string text) {
         s = sLeft = allButTextRegex.Replace(text.ToLower(),"");;

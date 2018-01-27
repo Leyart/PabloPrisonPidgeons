@@ -7,7 +7,6 @@ public class PigeonSpawner : MonoBehaviour {
 	List<GameObject> pigeons = new List<GameObject>();
 	public GameObject pigeon;
 	public GameObject pigeonHolder;
-	public GameObject path;
 
 
   
