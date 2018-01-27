@@ -30,6 +30,11 @@ public class PigeonSpawner : MonoBehaviour {
 			pigeon.PigeonKilled.AddListener((id) => {
 				RemovePigeon(pigeon);
 			});
+			pigeon.PigeonHit.AddListener((life) => {
+				if (life == 2) {
+					SpawnNextPigeon();
+				}
+			});
 
 			// tracking
 			pigeons.Add (pigeon);
