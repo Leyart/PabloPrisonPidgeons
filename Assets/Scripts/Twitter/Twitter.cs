@@ -455,7 +455,22 @@ namespace Twitter
                 Debug.Log("Url posted to web is " + url);
 
                 WWW web = new WWW(url, null, headers);
-                yield return web;
+			WaitForSeconds w;
+			while (!web.isDone)
+				w = new WaitForSeconds(0.1f);
+			Debug.Log("GetTimeline - " + web.text);
+
+
+			var tweets = JSON.Parse(web.text);
+			string[] toReturn = new string[tweets.Count];
+			Debug.Log("# of Tweets: " + tweets["statuses"].Count);
+			for (int i=0; i< tweets["statuses"].Count; i++)
+			{
+				string text = tweets["statuses"] [i] ["text"];
+				toReturn[i]=text.Replace ("#"+hashtag, "");
+				toReturn[i]=toReturn [i].Trim ();
+				Debug.Log("Tweet #" + i +" "+ toReturn[i]);
+			}
 
                 //WWW web = new WWW(GetTimelineURL, dummmy, headers);
                 //yield return web;
@@ -476,20 +491,11 @@ namespace Twitter
                     }
                     else
                     {
-                        callback(true,null);
+					callback(true,toReturn);
                     }
                 }
-                Debug.Log("GetTimeline - " + web.text);
-
-
-                var tweets = JSON.Parse(web.text);
-
-                Debug.Log("# of Tweets: " + tweets["statuses"].Count);
-                for (int i=0; i< tweets["statuses"].Count; i++)
-                {
-                    Debug.Log("Tweet #" + i + tweets["statuses"][i]["text"]);
-                }
-
+               
+			yield return web;
             }
 
         #endregion
