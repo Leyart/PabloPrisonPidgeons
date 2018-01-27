@@ -24,7 +24,9 @@ public class TwitterController : MonoBehaviour
     Twitter.RequestTokenResponse m_RequestTokenResponse;
     Twitter.AccessTokenResponse m_AccessTokenResponse;
 
-	bool isAuthenticated = false;
+	bool tweetsLoaded = false;
+	public bool isAuthenticated = false;
+	public string[] tweets;
 
 	// Use this for initialization
 	void Start() 
@@ -55,14 +57,15 @@ public class TwitterController : MonoBehaviour
 				text = "You need to register your game or application first.";
             }
         }
-
-		if (!this.isAuthenticated) {
-			// Load Tweets
-	
-
-		}
 			
     }
+
+	public void LoadTweets()
+	{
+		this.tweetsLoaded = false;
+		StartCoroutine(Twitter.API.GetMentionsTimeLine(USERID, 10, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
+			new Twitter.GetTimelineCallback(this.OnGetTimeline)));
+	}
 
 
     void LoadTwitterUserInfo()
@@ -90,10 +93,16 @@ public class TwitterController : MonoBehaviour
 
     }
 
+	public bool isTweetsLoaded() {
+		return this.tweetsLoaded;
+	}
+
     
-	void OnGetTimeline(bool success)
+	void OnGetTimeline(bool success, string[] tweets)
 	{
 		print("OnGetTimeline - " + (success ? "succedded." : "failed."));
+		this.tweetsLoaded = true;
+		this.tweets = tweets;
 	}
 		
 }
