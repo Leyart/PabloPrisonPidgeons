@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using System.Collections.Generic;
 
 public class TwitterController : MonoBehaviour 
 {
@@ -26,7 +27,7 @@ public class TwitterController : MonoBehaviour
 
 	bool tweetsLoaded = false;
 	public bool isAuthenticated = false;
-	public string[] tweets;
+	public List<String> tweets;
 
 	// Use this for initialization
 	void Start() 
@@ -102,7 +103,7 @@ public class TwitterController : MonoBehaviour
 	{
 		print("OnGetTimeline - " + (success ? "succedded." : "failed."));
 		this.tweetsLoaded = true;
-		this.tweets = tweets;
+		this.tweets = new List<String> (tweets);
 	}
 		
 }

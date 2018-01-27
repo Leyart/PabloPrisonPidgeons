@@ -18,7 +18,12 @@ public class TextLevelHelper
 		this.level = level;
 		textPaths = TextLevelHelper.GetPaths ();
 		fullText = this.GetLevelText (level);
-		tokens = TextLevelHelper.TokenizeText (fullText);
+		if (fullText == "") {
+			tokens = null;
+		}
+		else{
+			tokens = TextLevelHelper.TokenizeText (fullText);
+		}
 	}
 
 	static string[] GetPaths() { 
@@ -33,12 +38,15 @@ public class TextLevelHelper
 
 	string GetLevelText(int levelNumber,bool isText=true)
 	{
-		string path = this.textPaths[levelNumber-1];
-
-		//Read the text from directly from the test.txt file
-		StreamReader reader = new StreamReader(path); 
-		string toReturn = reader.ReadToEnd();
-		reader.Close();
+		string toReturn = "";
+		if (levelNumber - 1 <= this.textPaths.Length) {
+			//TODO ERROR OUT OF RANGE
+			string path = this.textPaths [levelNumber - 1];
+			//Read the text from directly from the test.txt file
+			StreamReader reader = new StreamReader (path); 
+			toReturn = reader.ReadToEnd ();
+			reader.Close ();
+		}
 		return toReturn;
 	}
 

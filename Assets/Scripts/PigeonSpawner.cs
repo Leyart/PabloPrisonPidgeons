@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,21 +13,30 @@ public class PigeonSpawner : MonoBehaviour {
 	public void loadGameLevel(int level ) {
 		TwitterController controller = GetComponent<TwitterController> ();
 		TextLevelHelper levelHelper = new TextLevelHelper (level);
-		if (controller.isAuthenticated && level % 2 == 1) {
+		if (!controller.isTweetsLoaded()) {
 			controller.LoadTweets ();
-			if (controller.tweets.Length > 0) {
-				tokens = new List<string> (levelHelper.GetTokens (controller.tweets [0]));
+		}
+		if (controller.isAuthenticated && level % 2 == 1) {
+			if (controller.tweets.Count > 0) {
+				int index = Random.Range (0, controller.tweets.Count - 1);
+
+				tokens = new List<string> (levelHelper.GetTokens (controller.tweets[index]));
+				controller.tweets.RemoveAt (index);
 			} else {
 				tokens = new List<string> (levelHelper.GetTokens ());
 			}
 		} else {
 			tokens = new List<string> (levelHelper.GetTokens ());
 		}
-		gameOver = false;
-		SpawnNextPigeon();
+		if (tokens == null || tokens.Count <= 0) {
+			GetComponent<GameControler> ().Winning ();
+		} else {
+			gameOver = false;
+			SpawnNextPigeon ();
+		}
 	}
 
-	private IEnumerator waitThenCallback(int time, Action callback) {
+	private IEnumerator waitThenCallback(int time, System.Action callback) {
 		yield return new WaitForSeconds(time);
 		callback();
 	}
@@ -75,6 +83,7 @@ public class PigeonSpawner : MonoBehaviour {
 		gameOver = true;
 		foreach (Pigeon pigeon in pigeons) {
 			pigeon.reader.GameOver ();
+			pigeon.Kill ();
 		}
 	}
 
