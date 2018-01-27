@@ -33,6 +33,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 			animator.Play("pigeon_fly");
 			animator.SetTrigger("hit");
 			PigeonHit.Invoke(word.Length - partial.Length);
+			GetComponentInChildren<ParticleSystem>().Play();
 		});
 	}
 
