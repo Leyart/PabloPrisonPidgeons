@@ -10,7 +10,8 @@ public class GameControler : MonoBehaviour {
 	public GameObject transmittedMessages;
 	public Canvas canvas;
 	private int transmittedMessagesCount;
-	// Use this for initialization
+
+	private int maxNumberToFail = 3;
 
 	public void StartGame(){
 		canvas.enabled = false;
@@ -22,6 +23,11 @@ public class GameControler : MonoBehaviour {
 
 	}
 
+	public void GameOver(){
+		GetComponent<PigeonSpawner> ().GameOver ();
+		canvas.enabled = true;
+	}
+		
 
 	// Update is called once per frame
 	void Update () {
@@ -37,11 +43,13 @@ public class GameControler : MonoBehaviour {
 
 
 	private void UpdateTransmissionView(){
-		
 		transmittedMessages.GetComponent<TextMesh>().text =  "Transmitted Messages: " + transmittedMessagesCount;
 	}
 	public void UpdateTransmissionCount(){
 		transmittedMessagesCount++;
 		UpdateTransmissionView ();
+		if (transmittedMessagesCount >= maxNumberToFail) {
+			GameOver ();
+		}
 	}
 }
