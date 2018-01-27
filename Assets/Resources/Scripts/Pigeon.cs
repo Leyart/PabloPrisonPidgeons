@@ -11,8 +11,11 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	public string text;
 	System.Guid id;
 	GameObject path;
-	public StringReader reader;
+	StringReader reader;
 
+	void Awake() {
+		reader = this.GetComponent<StringReader>();
+	}
 
 	// Use this for initialization
 	void Start () {
