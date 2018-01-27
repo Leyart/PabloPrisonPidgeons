@@ -8,27 +8,48 @@ public class GameControler : MonoBehaviour {
 	public GameObject scoreText;
 	private int score;
 	public GameObject transmittedMessages;
+	public Canvas canvas;
 	private int transmittedMessagesCount;
-	// Use this for initialization
-	void Start () {
+
+	private int maxNumberToFail = 3;
+
+	public void StartGame(){
+		canvas.enabled = false;
 		GetComponent<PigeonSpawner> ().loadGameLevel (1);
-		score = 4;
-		transmittedMessagesCount = 1;
-		UpdateScore ();
-		UpdateTransmissionCount ();
+		score = 0;
+		transmittedMessagesCount = 0;
+		UpdateScoreView ();
+		UpdateTransmissionView ();
+
 	}
-	
+
+	public void GameOver(){
+		GetComponent<PigeonSpawner> ().GameOver ();
+		canvas.enabled = true;
+	}
+		
+
 	// Update is called once per frame
 	void Update () {
 		
 	}
-	public void UpdateScore(){
+	private void UpdateScoreView(){
+		scoreText.GetComponent<TextMesh>().text = " " +score;
+	}
+	public void UpdateScoreCount(){
 		score++;
-		scoreText.GetComponent<TextMesh>().text =  "Points : " + score;
+		UpdateScoreView ();
 	}
 
+
+	private void UpdateTransmissionView(){
+		transmittedMessages.GetComponent<TextMesh>().text = " " + transmittedMessagesCount;
+	}
 	public void UpdateTransmissionCount(){
 		transmittedMessagesCount++;
-		transmittedMessages.GetComponent<TextMesh>().text =  "Transmitted Messages: " + transmittedMessagesCount;
+		UpdateTransmissionView ();
+		if (transmittedMessagesCount >= maxNumberToFail) {
+			GameOver ();
+		}
 	}
 }

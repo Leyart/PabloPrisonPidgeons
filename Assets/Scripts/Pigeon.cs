@@ -9,8 +9,8 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	public class PigeonKilledEvent : UnityEvent<string> {};
 	public class PigeonHitEvent : UnityEvent<int> {};
 
-	public PigeonArrivedEvent PigeonArrived = new PigeonArrivedEvent();
-	public PigeonKilledEvent PigeonKilled = new PigeonKilledEvent();
+	public static PigeonArrivedEvent PigeonArrived = new PigeonArrivedEvent();
+	public static PigeonKilledEvent PigeonKilled = new PigeonKilledEvent();
 	public PigeonHitEvent PigeonHit = new PigeonHitEvent();
 
 	public float speed;

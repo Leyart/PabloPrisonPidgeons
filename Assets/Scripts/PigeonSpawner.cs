@@ -8,11 +8,11 @@ public class PigeonSpawner : MonoBehaviour {
 	public Pigeon pigeon;
 	public GameObject pigeonHolder;
 	List<string> tokens;
-  
+	bool gameOver;
 	public void loadGameLevel(int level ) {
 		TextLevelHelper levelHelper = new TextLevelHelper(level);
 		tokens = new List<string>(levelHelper.GetTokens ());
-
+		gameOver = false;
 		SpawnNextPigeon();
 	}
 
@@ -24,16 +24,17 @@ public class PigeonSpawner : MonoBehaviour {
 			Pigeon pigeon = Instantiate<Pigeon>(this.pigeon);
 
 			// events
-			pigeon.PigeonArrived.AddListener((id) => {
+			Pigeon.PigeonArrived.AddListener((id) => {
 				RemovePigeon(pigeon);
 				GetComponent<GameControler>().UpdateTransmissionCount();
 			});
-			pigeon.PigeonKilled.AddListener((id) => {
+			Pigeon.PigeonKilled.AddListener((id) => {
 				RemovePigeon(pigeon);
-				GetComponent<GameControler>().UpdateScore();
+				GetComponent<GameControler>().UpdateScoreCount();
 			});
 			pigeon.PigeonHit.AddListener((life) => {
-				if (life == 2) {
+
+				if (life == 2 && !gameOver) {
 					SpawnNextPigeon();
 				}
 			});
@@ -42,7 +43,13 @@ public class PigeonSpawner : MonoBehaviour {
 			pigeons.Add (pigeon);
 
 			pigeon.SendPigeon(word);
+
+			GetComponent<AudioSource>().Play();
 		}
+	}
+
+	public void GameOver(){
+		gameOver = true;
 	}
 
 	void RemovePigeon(Pigeon pigeon) {
