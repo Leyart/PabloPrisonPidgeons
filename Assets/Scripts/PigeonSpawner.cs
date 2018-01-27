@@ -64,6 +64,9 @@ public class PigeonSpawner : MonoBehaviour {
 
 	public void GameOver(){
 		gameOver = true;
+		foreach (Pigeon pigeon in pigeons) {
+			pigeon.reader.GameOver ();
+		}
 	}
 
 	void RemovePigeon(Pigeon pigeon) {
