@@ -8,9 +8,12 @@ public class GameControler : MonoBehaviour {
 	public GameObject scoreText;
 	private int score;
 	public GameObject transmittedMessages;
+	public Canvas canvas;
 	private int transmittedMessagesCount;
 	// Use this for initialization
-	void Start () {
+
+	public void StartGame(){
+		canvas.enabled = false;
 		GetComponent<PigeonSpawner> ().loadGameLevel (1);
 		score = 0;
 		transmittedMessagesCount = 0;
@@ -18,7 +21,8 @@ public class GameControler : MonoBehaviour {
 		UpdateTransmissionView ();
 
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
 		
