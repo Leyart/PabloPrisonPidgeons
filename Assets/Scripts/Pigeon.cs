@@ -54,7 +54,6 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 				ArrivedAtTheEnd();
 				Kill();
 		}
-		Debug.Log ("coo from "+this.id.ToString()+ "with text: "+text);
 	}
 
 	public void ArrivedAtTheEnd() {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour {
+public class PigeonSpawner : MonoBehaviour {
 	List<GameObject> pigeons = new List<GameObject>();
 	public GameObject pigeon;
 	public GameObject pigeonHolder;
