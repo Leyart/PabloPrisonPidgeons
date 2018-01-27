@@ -18,6 +18,26 @@ public class CatmullRomSpline : MonoBehaviour
 		Vector2 pointStart = new Vector2 (posLB.x,Random.Range(posLB.y , posRU.y));
 		controlPointsList.Add (pointStart);
 		//add sorted random list of  points
+
+
+
+		Vector2 minP = posLB + new Vector2 (1, 0);
+		Vector2 maxP = posRU -new Vector2 (-1, 0);
+		float numberOfPoints = Random.Range (3, 10);
+		float distance = posRU.x - posLB.x;
+		float deltaDistance = distance / (numberOfPoints+1);
+		for (int i = 0; i < numberOfPoints; i++) {
+			
+			Vector2 p = new Vector2 (minP.x + deltaDistance*(i+1),Random.Range(posLB.y,posRU.y));
+			controlPointsList.Add (p);
+			if (Random.Range (0, 10) < 2&& i>1) {
+				Vector2 loopPoint = new Vector2 (minP.x + deltaDistance*(i-1),Random.Range(posLB.y,posRU.y));
+				controlPointsList.Add (loopPoint);
+
+			}
+		}
+			
+
 		Vector2 pointEnd = new Vector2 (posRU.x,Random.Range(posLB.y , posRU.y));
 		controlPointsList.Add (pointEnd);
 		Vector2 pointEndOffset = new Vector2 (posRU.x+10,posLB.y/2);
