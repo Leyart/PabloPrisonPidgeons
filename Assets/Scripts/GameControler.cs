@@ -46,7 +46,7 @@ public class GameControler : MonoBehaviour {
 		scoreAnimator.SetTrigger ("trigger");
 	}
 	public void UpdateScoreCount(){
-		score++;
+		score += 1;
 		UpdateScoreView ();
 	}
 
@@ -58,7 +58,9 @@ public class GameControler : MonoBehaviour {
 
 	}
 	public void UpdateTransmissionCount(){
+		Debug.Log (transmittedMessagesCount);
 		transmittedMessagesCount++;
+		Debug.Log (transmittedMessagesCount);
 		UpdateTransmissionView ();
 		if (transmittedMessagesCount >= maxNumberToFail) {
 			GameOver ();
