@@ -60,6 +60,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 
 	public void Fly() {
 		if (pathPoints != null && pathPoints.Count > 0) {
+			speed = Random.Range(0.02f, 0.18f);
 			if (Vector2.Distance(this.transform.position, (Vector2) pathPoints[0]) > 0.2f) {
 				Vector2 nextPos = Vector2.MoveTowards(this.transform.position, (Vector2) pathPoints[0], speed);
 				this.transform.position = nextPos;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,11 @@ public class PigeonSpawner : MonoBehaviour {
 		SpawnNextPigeon();
 	}
 
+	private IEnumerator waitThenCallback(int time, Action callback) {
+		yield return new WaitForSeconds(time);
+		callback();
+	}
+
 	void SpawnNextPigeon() {
 		if (tokens.Count > 0) {
 			string word = tokens[0];
@@ -42,6 +48,10 @@ public class PigeonSpawner : MonoBehaviour {
 			pigeon.PigeonKilled.AddListener((id) => {
 				GameObject e = Instantiate<GameObject>(this.explosion);
 				e.transform.position = pigeon.transform.position;
+				StartCoroutine(waitThenCallback(2, () => {
+					Destroy(e);
+				}));
+
 				RemovePigeon(pigeon);
 				GetComponent<GameControler>().UpdateScoreCount();
 			});
