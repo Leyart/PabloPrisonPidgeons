@@ -10,8 +10,19 @@ public class PigeonSpawner : MonoBehaviour {
 	List<string> tokens;
 	bool gameOver;
 	public void loadGameLevel(int level ) {
-		TextLevelHelper levelHelper = new TextLevelHelper(level);
-		tokens = new List<string>(levelHelper.GetTokens ());
+		TwitterController controller = GetComponent<TwitterController> ();
+		TextLevelHelper levelHelper = new TextLevelHelper (level);
+		if (controller.isAuthenticated) {
+			controller.LoadTweets ();
+			if (controller.tweets.Length > 0) {
+				tokens = new List<string> (levelHelper.GetTokens (controller.tweets [0]));
+			} else {
+				
+				tokens = new List<string> (levelHelper.GetTokens ());
+			}
+		} else {
+			tokens = new List<string> (levelHelper.GetTokens ());
+		}
 		gameOver = false;
 		SpawnNextPigeon();
 	}

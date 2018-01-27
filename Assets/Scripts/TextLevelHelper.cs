@@ -55,6 +55,10 @@ public class TextLevelHelper
 		return tokens;
 	}
 
+	public string[] GetTokens(string text) {
+		return TokenizeText(text);
+	}
+
 	public string GetFullText() {
 		return fullText;
 	}
