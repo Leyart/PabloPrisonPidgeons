@@ -37,7 +37,6 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 		this.id =  System.Guid.NewGuid();
 		pathPoints = GetComponentInChildren<CatmullRomSpline>().path;
 	}
-	
 
 	void Update() {
 		Fly();
