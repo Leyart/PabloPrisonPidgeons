@@ -23,12 +23,12 @@ public class GameControler : MonoBehaviour {
 		
 	}
 	public void UpdateScore(){
-		transmittedMessagesCount++;
-		transmittedMessages.GetComponent<TextMesh>().text =  "Transmitted Messages: " + transmittedMessagesCount;
+		score++;
+		scoreText.GetComponent<TextMesh>().text =  "Points : " + score;
 	}
 
 	public void UpdateTransmissionCount(){
-		score++;
-		scoreText.GetComponent<TextMesh>().text =  "Points : " + score;
+		transmittedMessagesCount++;
+		transmittedMessages.GetComponent<TextMesh>().text =  "Transmitted Messages: " + transmittedMessagesCount;
 	}
 }

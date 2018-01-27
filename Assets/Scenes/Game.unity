@@ -372,6 +372,22 @@ Prefab:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 673782692}
+    - target: {fileID: 114070996957875346, guid: 8a501ff6267fa4882ab21dd4062adedd,
+        type: 2}
+      propertyPath: pigeon
+      value: 
+      objectReference: {fileID: 114595485636773776, guid: 08fea7b973b7440ffafbcb496dc5b7ec,
+        type: 2}
+    - target: {fileID: 102243135247794402, guid: 8a501ff6267fa4882ab21dd4062adedd,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Points : 0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 102061691835851972, guid: 8a501ff6267fa4882ab21dd4062adedd,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Transmitted Messages: 0'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a501ff6267fa4882ab21dd4062adedd, type: 2}
   m_IsPrefabParent: 0
