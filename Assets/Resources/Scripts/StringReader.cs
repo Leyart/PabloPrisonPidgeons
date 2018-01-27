@@ -11,10 +11,14 @@ public class StringReader : MonoBehaviour {
     }
     public string s;
     private string sLeft;
+	public bool isCompleted {
+		get;
+		set;
+	}
 
     void Awake() {
-		TextLevelHelper levelHelper = new TextLevelHelper (Random.Range (1, 5));
-		sLeft = s = levelHelper.GetTokens()[0];
+		
+		sLeft = s;
     }
 
     protected void MatchCharacter(char c) {
@@ -26,12 +30,18 @@ public class StringReader : MonoBehaviour {
             } else {
                 // Trigger completed
                 Debug.Log("word " + s + " completed!");
+				isCompleted = true;
             }
         }
     }
 
 	// Use this for initialization
 	void Start () {
+		isCompleted = false;
+	}
+
+	public void Enable (string text) {
+		s = text;
 		KeyboardTyper.keyTyped.AddListener(MatchCharacter);
 	}
     
