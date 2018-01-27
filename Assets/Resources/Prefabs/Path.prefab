@@ -496,7 +496,6 @@ MonoBehaviour:
   - {fileID: 4560335762841640}
   - {fileID: 4169017255324750}
   - {fileID: 4607967641450040}
-  isLooping: 0
 --- !u!135 &135202257241163752
 SphereCollider:
   m_ObjectHideFlags: 1

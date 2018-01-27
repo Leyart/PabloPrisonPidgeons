@@ -9,8 +9,7 @@ public class Pigeon : MonoBehaviour {
 	// 2 elements for the rotation and 1 for the scaling.
 	public Vector3 rotation;
 	public string text;
-	public Object path;
-
+	public GameObject path;
 	// Use this for initialization
 	void Start () {
 		Vector2 posLB = Camera.main.ViewportToWorldPoint (new Vector2 (0, 0));
@@ -18,19 +17,9 @@ public class Pigeon : MonoBehaviour {
 		Vector2 startPos = new Vector2 (posLB.x,  Random.Range(posLB.y, posRU.y));
 		this.transform.position = startPos;
 
-		//CreatPath ();
-
-
 	}
 
 
-	void CreatPath(){
-		GameObject emptyGameObject = new GameObject ();
-		int numberOfSphere = Random.Range (4, 20);
-
-		path = emptyGameObject;
-	
-	}
 
 	void Update() {
 		// path.getUpdatedPosition (x,y, speed);
