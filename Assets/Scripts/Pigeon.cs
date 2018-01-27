@@ -26,10 +26,6 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 		this.id =  System.Guid.NewGuid();
 	}
 
-
-	public void setPath(GameObject path){
-		this.path = path;
-	}
 	void Update() {
 		// path.getUpdatedPosition (x,y, speed);
 		Fly();

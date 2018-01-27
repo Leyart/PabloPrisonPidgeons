@@ -7,7 +7,7 @@ public class CatmullRomSpline : MonoBehaviour
 	//Has to be at least 4 points
 	 ArrayList controlPointsList;
 
-	void start(){
+	void Start(){
 		controlPointsList = new ArrayList();
 		Vector2 posLB = Camera.main.ViewportToWorldPoint (new Vector2 (0, 0));
 		Vector2 posRU = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
@@ -20,7 +20,7 @@ public class CatmullRomSpline : MonoBehaviour
 		controlPointsList.Add (pointEnd);
 		Vector2 pointEndOffset = new Vector2 (posRU.x+10,posLB.y/2);
 		controlPointsList.Add (pointEndOffset);
-		CreateLine ();
+		// CreateLine ();
 	}
 
 	//Display without having to press play
