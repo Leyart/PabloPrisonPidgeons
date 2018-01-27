@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class TwitterHelper : MonoBehaviour 
+public class TwitterMenu : MonoBehaviour 
 {
     public float USER_LOG_IN_X;
     public float USER_LOG_IN_Y;
