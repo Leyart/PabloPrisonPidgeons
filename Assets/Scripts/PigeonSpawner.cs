@@ -26,9 +26,11 @@ public class PigeonSpawner : MonoBehaviour {
 			// events
 			pigeon.PigeonArrived.AddListener((id) => {
 				RemovePigeon(pigeon);
+				GetComponent<GameControler>().UpdateTransmissionCount();
 			});
 			pigeon.PigeonKilled.AddListener((id) => {
 				RemovePigeon(pigeon);
+				GetComponent<GameControler>().UpdateScore();
 			});
 			pigeon.PigeonHit.AddListener((life) => {
 				if (life == 2) {
