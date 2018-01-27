@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 212338781215328044}
   - component: {fileID: 95227065965475268}
   m_Layer: 0
-  m_Name: pigeon
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114595485636773776}
   - component: {fileID: 114065361036285372}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Pigeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
