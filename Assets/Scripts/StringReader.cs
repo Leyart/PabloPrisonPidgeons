@@ -35,12 +35,10 @@ public class StringReader : MonoBehaviour {
             // Trigger success
             if (remainingWord.Length > 1) {
                 remainingWord = remainingWord.Substring(1);
-                Debug.Log("Remaining: " + remainingWord);
                 GetComponentInChildren<TextMesh>().text = remainingWord;
                 WordPartial.Invoke(originalWord, remainingWord);
             } else {
                 // Trigger completed
-                Debug.Log("Word " + originalWord + " completed!");
                 WordCompleted.Invoke();
             }
         }
