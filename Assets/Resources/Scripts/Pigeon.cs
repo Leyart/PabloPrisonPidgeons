@@ -18,7 +18,7 @@ public class Pigeon : MonoBehaviour {
 		Vector2 startPos = new Vector2 (posLB.x,  Random.Range(posLB.y, posRU.y));
 		this.transform.position = startPos;
 
-		CreatPath ();
+		//CreatPath ();
 
 
 	}
