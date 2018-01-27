@@ -72,9 +72,9 @@ public class TwitterMenu : MonoBehaviour
 		if (isActive) {
 			// LogIn/Register Button
 			Rect rect = new Rect (Screen.width * USER_LOG_IN_X,
-				                 Screen.height * USER_LOG_IN_Y,
-				                 Screen.width * USER_LOG_IN_WIDTH,
-				                 Screen.height * USER_LOG_IN_HEIGHT);
+				            Screen.height * USER_LOG_IN_Y,
+				            Screen.width * USER_LOG_IN_WIDTH,
+				            Screen.height * USER_LOG_IN_HEIGHT);
 
 			if (string.IsNullOrEmpty (CONSUMER_KEY) || string.IsNullOrEmpty (CONSUMER_SECRET)) {
 				string text = "You need to register your game or application first.\n Click this button, register and fill CONSUMER_KEY and CONSUMER_SECRET of Demo game object.";
@@ -86,11 +86,14 @@ public class TwitterMenu : MonoBehaviour
 
 				if (!string.IsNullOrEmpty (m_AccessTokenResponse.ScreenName)) {
 					text = m_AccessTokenResponse.ScreenName + "\nClick to register with a different Twitter account";
+
 				} else {
 					text = "You need to register your game or application first.";
 				}
 
 				if (GUI.Button (rect, text)) {
+					this.isAuthenticated = false;
+					Canvas.ForceUpdateCanvases ();
 					StartCoroutine (Twitter.API.GetRequestToken (CONSUMER_KEY, CONSUMER_SECRET,
 						new Twitter.RequestTokenCallback (this.OnRequestTokenCallback)));
 				}
@@ -146,7 +149,7 @@ public class TwitterMenu : MonoBehaviour
 
 	public void setActive() {
 		this.isActive = !this.isActive;
-		OnGUI ();
+		Canvas.ForceUpdateCanvases ();
 	}
 
 
@@ -229,7 +232,7 @@ public class TwitterMenu : MonoBehaviour
 		print("OnGetTimeline - " + (success ? "succedded." : "failed."));
 	}
 
-    void OnGetHashtag(bool success)
+	void OnGetHashtag(bool success, string[] retrieved)
     {
         print("OnGetHashtag - " + (success ? "SUCCESS" : "FAIL"));
     }

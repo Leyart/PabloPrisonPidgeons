@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,21 +6,25 @@ using UnityEngine.SceneManagement;
 public class PigeonSpawner : MonoBehaviour {
 	List<Pigeon> pigeons = new List<Pigeon>();
 	public Pigeon pigeon;
-	public GameObject explosion;
 	public GameObject pigeonHolder;
 	List<string> tokens;
 	bool gameOver;
+	public GameObject explosion;
 	public void loadGameLevel(int level ) {
-		TextLevelHelper levelHelper = new TextLevelHelper(level);
-		tokens = new List<string>(levelHelper.GetTokens ());
+		TwitterController controller = GetComponent<TwitterController> ();
+		TextLevelHelper levelHelper = new TextLevelHelper (level);
+		if (controller.isAuthenticated) {
+			controller.LoadTweets ();
+			if (controller.tweets.Length > 0) {
+				tokens = new List<string> (levelHelper.GetTokens (controller.tweets [0]));
+			} else {
+				tokens = new List<string> (levelHelper.GetTokens ());
+			}
+		} else {
+			tokens = new List<string> (levelHelper.GetTokens ());
+		}
 		gameOver = false;
 		SpawnNextPigeon();
-	}
-
-	private IEnumerator waitThenCallback(float time, Action callback)
-	{
-		yield return new WaitForSeconds(time);
-		callback();
 	}
 
 	void SpawnNextPigeon() {
@@ -32,18 +35,14 @@ public class PigeonSpawner : MonoBehaviour {
 			Pigeon pigeon = Instantiate<Pigeon>(this.pigeon);
 
 			// events
-			Pigeon.PigeonArrived.AddListener((id) => {
+			pigeon.PigeonArrived.AddListener((id) => {
 				RemovePigeon(pigeon);
 				GetComponent<GameControler>().UpdateTransmissionCount();
 			});
-			Pigeon.PigeonKilled.AddListener((id, p) => {
-				GameObject explosion = Instantiate<GameObject>(this.explosion);
-				explosion.transform.position = p.transform.position;
-				StartCoroutine(waitThenCallback(2, () => {
-					Destroy(explosion);
-				}));
-
-				RemovePigeon(p);
+			pigeon.PigeonKilled.AddListener((id) => {
+				GameObject e = Instantiate<GameObject>(this.explosion);
+				e.transform.position = pigeon.transform.position;
+				RemovePigeon(pigeon);
 				GetComponent<GameControler>().UpdateScoreCount();
 			});
 			pigeon.PigeonHit.AddListener((life) => {

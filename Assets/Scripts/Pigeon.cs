@@ -6,12 +6,15 @@ using UnityEngine.Events;
 public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 
 	public class PigeonArrivedEvent : UnityEvent<string> {}
-	public class PigeonKilledEvent : UnityEvent<string, Pigeon> {};
+	public class PigeonKilledEvent : UnityEvent<string> {};
 	public class PigeonHitEvent : UnityEvent<int> {};
 
-	public static PigeonArrivedEvent PigeonArrived = new PigeonArrivedEvent();
-	public static PigeonKilledEvent PigeonKilled = new PigeonKilledEvent();
+	public PigeonArrivedEvent PigeonArrived = new PigeonArrivedEvent();
+	public PigeonKilledEvent PigeonKilled = new PigeonKilledEvent();
 	public PigeonHitEvent PigeonHit = new PigeonHitEvent();
+
+	public static UnityEvent AnyPigeonArrived = new UnityEvent();
+	public static UnityEvent AnyPigeonKilled = new UnityEvent();
 
 	public float speed;
 
@@ -25,7 +28,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 
 	void Awake() {
 		reader = this.GetComponent<StringReader>();
-		speed = Random.Range(0.1f, 0.15f);
+		speed = Random.Range(0.10f, 0.20f);
 
 		reader.WordCompleted.AddListener(Kill);
 		reader.WordPartial.AddListener((word, partial) => {
@@ -70,11 +73,13 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 
 	void ArrivedAtTheEnd() {
 		PigeonArrived.Invoke(reader.Word);
+		AnyPigeonArrived.Invoke();
 		Destroy (gameObject);
 	}
 
 	public void Kill() {
-		PigeonKilled.Invoke(reader.Word, this);
+		PigeonKilled.Invoke(reader.Word);
+		AnyPigeonKilled.Invoke();
 		Destroy (gameObject);
 	}
 }

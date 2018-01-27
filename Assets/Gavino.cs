@@ -10,11 +10,11 @@ public class Gavino : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		TextMesh textMesh = GetComponentInChildren<TextMesh>();
-		Pigeon.PigeonArrived.AddListener((word) => {
+		Pigeon.AnyPigeonArrived.AddListener(() => {
 			textMesh.text = pigeonArrivedSentences[Random.Range(0, pigeonArrivedSentences.Length - 1)];
 		});
 
-		Pigeon.PigeonKilled.AddListener((word, p) => {
+		Pigeon.AnyPigeonKilled.AddListener(() => {
 			textMesh.text = pigeonKilledSentences[Random.Range(0, pigeonKilledSentences.Length - 1)];
 		});
 	}

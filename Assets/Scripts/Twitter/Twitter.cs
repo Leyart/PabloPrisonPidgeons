@@ -30,7 +30,7 @@ namespace Twitter
     public delegate void RequestTokenCallback(bool success, RequestTokenResponse response);
     public delegate void AccessTokenCallback(bool success, AccessTokenResponse response);
     public delegate void PostTweetCallback(bool success);
-    public delegate void GetTimelineCallback(bool success);
+	public delegate void GetTimelineCallback(bool success, string[] tweets);
 
     public class API
     {
@@ -291,12 +291,25 @@ namespace Twitter
 			Debug.Log("Url posted to web is " + GetTimelineURL);
 
 			WWW web = new WWW(GetTimelineURL, null, headers);
-			yield return web;
+			WaitForSeconds w;
+			while (!web.isDone)
+				w = new WaitForSeconds(0.1f);
+			Debug.Log("GetTimeLineForUser - " + web.text);
+
+
+			var tweets = JSON.Parse(web.text);
+			string[] toReturn = new string[tweets.Count];
+			Debug.Log("# of Tweets: " + tweets.Count);
+			for (int i=0; i< tweets.Count; i++)
+			{
+				Debug.Log("Tweet #" + i +" "+ tweets[i]["text"]);
+				toReturn[i]=tweets[i]["text"];
+			}
 
 			if (!string.IsNullOrEmpty(web.error))
 			{
 				Debug.Log(string.Format("GetTimeLineForUser - web error - failed. {0}\n{1}", web.error, web.text));
-				callback(false);
+				callback(false,null);
 			}
 			else
 			{
@@ -305,23 +318,97 @@ namespace Twitter
 				if (!string.IsNullOrEmpty(error))
 				{
 					Debug.Log(string.Format("GetTimeLineForUser - bad response - failed. {0}", error));
-					callback(false);
+					callback(false,null);
 				}
 				else
 				{
-					callback(true);
+					callback(true,toReturn);
 				}
 			}
+
+			yield return web;
+
+		}
+
+		public static IEnumerator GetMentionsTimeLine(string userId, int num, string consumerKey, string consumerSecret, AccessTokenResponse response, GetTimelineCallback callback)
+		{
+			string GetTimelineURL = "https://api.twitter.com/1.1/statuses/mentions_timeline.json";
+
+
+			Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+			parameters.Add("count", num.ToString());
+
+
+
+			//Build the final search URL to match the oAuth signature passed in the header adding the parameters above
+			string appendURL = "";
+			for (int i = 0; i < parameters.Count; i++)
+			{
+
+				if (!parameters.Keys.ElementAt(i).Contains("q"))
+				{
+
+					string pre = "";
+					if (i > 0)
+						pre = "";
+
+					appendURL = appendURL + pre + parameters.Keys.ElementAt(i) + "=" + parameters.Values.ElementAt(i) + "&";
+				}
+			}
+			appendURL = appendURL.Remove (appendURL.Length-1);
+
+			// HTTP header
+			Dictionary<string, string> headers = new Dictionary<string, string>();
+			headers["Authorization"] = GetHeaderWithAccessToken("GET", GetTimelineURL, consumerKey, consumerSecret, response, parameters);
+
+			//Escape all the spaces, quote marks to match what GetHeaderAccess did to the string
+			//Have to do this after the oAuth Signature was created so we don't double-encode...
+
+			GetTimelineURL = GetTimelineURL+"?" + appendURL;
+
+			Debug.Log("Url posted to web is " + GetTimelineURL);
+
+			WWW web = new WWW(GetTimelineURL, null, headers);
+			WaitForSeconds w;
+			while (!web.isDone)
+				w = new WaitForSeconds(0.1f);
 			Debug.Log("GetTimeLineForUser - " + web.text);
 
 
 			var tweets = JSON.Parse(web.text);
-
-			Debug.Log("# of Tweets: " + tweets["statuses"].Count);
-			for (int i=0; i< tweets["statuses"].Count; i++)
+			string[] toReturn = new string[tweets.Count];
+			Debug.Log("# of Tweets: " + tweets.Count);
+			for (int i=0; i< tweets.Count; i++)
 			{
-				Debug.Log("Tweet #" + i + tweets["statuses"][i]["text"]);
+				
+				string text = tweets [i] ["text"];
+				toReturn[i]=text.Replace ("@"+userId, "");
+				toReturn[i]=toReturn [i].Trim ();
+				Debug.Log("Tweet #" + i +" "+ toReturn[i]);
 			}
+
+			if (!string.IsNullOrEmpty(web.error))
+			{
+				Debug.Log(string.Format("GetTimeLineForUser - web error - failed. {0}\n{1}", web.error, web.text));
+				callback(false,null);
+			}
+			else
+			{
+				string error = Regex.Match(web.text, @"<error>([^&]+)</error>").Groups[1].Value;
+
+				if (!string.IsNullOrEmpty(error))
+				{
+					Debug.Log(string.Format("GetTimeLineForUser - bad response - failed. {0}", error));
+					callback(false,null);
+				}
+				else
+				{
+					callback(true,toReturn);
+				}
+			}
+
+			yield return web;
 
 		}
 			
@@ -376,7 +463,7 @@ namespace Twitter
                 if (!string.IsNullOrEmpty(web.error))
                 {
                     Debug.Log(string.Format("GetTimeline1 - web error - failed. {0}\n{1}", web.error, web.text));
-                    callback(false);
+                    callback(false,null);
                 }
                 else
                 {
@@ -385,11 +472,11 @@ namespace Twitter
                     if (!string.IsNullOrEmpty(error))
                     {
                         Debug.Log(string.Format("GetTimeline - bad response - failed. {0}", error));
-                        callback(false);
+                        callback(false,null);
                     }
                     else
                     {
-                        callback(true);
+                        callback(true,null);
                     }
                 }
                 Debug.Log("GetTimeline - " + web.text);
