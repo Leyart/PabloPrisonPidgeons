@@ -278,6 +278,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &922399392 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1439060517472386, guid: 76600f87208414b1fb6241a64560ad7b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1734691543}
 --- !u!1001 &1082781355
 Prefab:
   m_ObjectHideFlags: 0
@@ -333,6 +338,11 @@ Prefab:
       propertyPath: pigeonHolder
       value: 
       objectReference: {fileID: 654619698}
+    - target: {fileID: 114070996957875346, guid: 8a501ff6267fa4882ab21dd4062adedd,
+        type: 2}
+      propertyPath: path
+      value: 
+      objectReference: {fileID: 922399392}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a501ff6267fa4882ab21dd4062adedd, type: 2}
   m_IsPrefabParent: 0
@@ -542,4 +552,4 @@ MonoBehaviour:
   speed: 0
   rotation: {x: 0, y: 0, z: 0}
   text: 
-  Children: []
+  path: {fileID: 0}
