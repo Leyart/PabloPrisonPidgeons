@@ -9,8 +9,6 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	// 2 elements for the rotation and 1 for the scaling.
 	public Vector3 rotation;
 	public string text;
-	public GameObject path;
-	public Object path;
 	System.Guid id;
 
 
@@ -22,7 +20,6 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 		this.transform.position = startPos;
 		this.id =  System.Guid.NewGuid();
 
-		//CreatPath ();
 	   //TextLevelHelper levelHelper = new TextLevelHelper (Random.Range (1, 5));
 		//levelHelper.GetTokens () [0];
 
