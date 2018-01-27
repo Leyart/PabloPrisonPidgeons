@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: c8b16c70ecfc248dbb32d130d5e4a200
-timeCreated: 1517048474
+guid: 71e1683961f16487389797b7fc0a41dd
+timeCreated: 1517061278
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Pepe_0
-    21300002: Pepe_1
-    21300004: Pepe_2
-    21300006: Pepe_3
+    21300000: Pena_0
+    21300002: Pena_1
+    21300004: Pena_2
+    21300006: Pena_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -35,7 +35,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -124,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pepe_0
+      name: Pena_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 26
-        width: 80
-        height: 184
+        x: 8
+        y: 0
+        width: 52
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,13 +138,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pepe_1
+      name: Pena_1
       rect:
         serializedVersion: 2
-        x: 123
-        y: 25
-        width: 80
-        height: 184
+        x: 107
+        y: 1
+        width: 52
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,13 +152,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pepe_2
+      name: Pena_2
       rect:
         serializedVersion: 2
-        x: 233
-        y: 25
-        width: 80
-        height: 184
+        x: 218
+        y: 1
+        width: 52
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,13 +166,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pepe_3
+      name: Pena_3
       rect:
         serializedVersion: 2
-        x: 346
-        y: 25
-        width: 80
-        height: 184
+        x: 300
+        y: 2
+        width: 52
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

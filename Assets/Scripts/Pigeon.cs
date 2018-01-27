@@ -29,6 +29,9 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 
 		reader.WordCompleted.AddListener(Kill);
 		reader.WordPartial.AddListener((word, partial) => {
+			Animator animator = GetComponentInChildren<Animator>();
+			animator.Play("pigeon_fly");
+			animator.SetTrigger("hit");
 			PigeonHit.Invoke(word.Length - partial.Length);
 		});
 	}
