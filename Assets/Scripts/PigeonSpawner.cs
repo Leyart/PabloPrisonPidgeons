@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ public class PigeonSpawner : MonoBehaviour {
 	public void loadGameLevel(int level ) {
 		TwitterController controller = GetComponent<TwitterController> ();
 		TextLevelHelper levelHelper = new TextLevelHelper (level);
-		if (controller.isAuthenticated) {
+		if (controller.isAuthenticated && level==1) {
 			controller.LoadTweets ();
 			if (controller.tweets.Length > 0) {
 				tokens = new List<string> (levelHelper.GetTokens (controller.tweets [0]));
@@ -25,6 +26,11 @@ public class PigeonSpawner : MonoBehaviour {
 		}
 		gameOver = false;
 		SpawnNextPigeon();
+	}
+
+	private IEnumerator waitThenCallback(int time, Action callback) {
+		yield return new WaitForSeconds(time);
+		callback();
 	}
 
 	void SpawnNextPigeon() {
@@ -42,6 +48,10 @@ public class PigeonSpawner : MonoBehaviour {
 			pigeon.PigeonKilled.AddListener((id) => {
 				GameObject e = Instantiate<GameObject>(this.explosion);
 				e.transform.position = pigeon.transform.position;
+				StartCoroutine(waitThenCallback(2, () => {
+					Destroy(e);
+				}));
+
 				RemovePigeon(pigeon);
 				GetComponent<GameControler>().UpdateScoreCount();
 			});
@@ -71,5 +81,9 @@ public class PigeonSpawner : MonoBehaviour {
 	void RemovePigeon(Pigeon pigeon) {
 		pigeons.Remove(pigeon);
 		SpawnNextPigeon();
+	}
+
+	public bool noMorePigeon(){
+		return pigeons.Count <= 0;
 	}
 }

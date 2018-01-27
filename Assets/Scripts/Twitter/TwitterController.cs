@@ -63,7 +63,7 @@ public class TwitterController : MonoBehaviour
 	public void LoadTweets()
 	{
 		this.tweetsLoaded = false;
-		StartCoroutine(Twitter.API.GetMentionsTimeLine(USERID, 10, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
+		StartCoroutine(Twitter.API.GetHashtag("HabloEscobarGGJ18", 10, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
 			new Twitter.GetTimelineCallback(this.OnGetTimeline)));
 	}
 

@@ -10,15 +10,17 @@ public class GameControler : MonoBehaviour {
 	public GameObject transmittedMessages;
 	public Canvas canvas;
 	private int transmittedMessagesCount;
-
+	private int level = 1;
 	private int maxNumberToFail = 3;
 
 	private Animator scoreAnimator;
 	private Animator transmittedAnimator;
+	PigeonSpawner spawner;
 
 	public void StartGame(){
 		canvas.enabled = false;
-		GetComponent<PigeonSpawner> ().loadGameLevel (1);
+		spawner = GetComponent<PigeonSpawner> ();
+		spawner.loadGameLevel (level);
 		score = 0;
 		transmittedMessagesCount = 0;
 
@@ -39,7 +41,9 @@ public class GameControler : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		if (spawner.noMorePigeon ()) {
+			NextLevel();
+		}
 	}
 	private void UpdateScoreView(){
 		scoreText.GetComponent<TextMesh>().text = " " +score;
@@ -65,5 +69,17 @@ public class GameControler : MonoBehaviour {
 		if (transmittedMessagesCount >= maxNumberToFail) {
 			GameOver ();
 		}
+	}
+
+	public void NextLevel() {
+		level++;
+		if (level >= 10) {
+			Winning ();
+		} else {
+			spawner.loadGameLevel (level);
+		}
+	}
+
+	public void Winning() {
 	}
 }

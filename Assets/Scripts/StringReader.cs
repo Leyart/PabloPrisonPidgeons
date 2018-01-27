@@ -49,6 +49,12 @@ public class StringReader : MonoBehaviour {
 	public void Enable (string text) {
         originalWord = remainingWord = allButTextRegex.Replace(text.ToLower(),"");;
         GetComponentInChildren<TextMesh>().text = remainingWord;
+		GetComponentInChildren<TextMesh> ().fontSize = 20;
+		List<UnityEngine.Color> colors = new List<Color> ();
+		colors.Add (Color.red);
+		colors.Add (Color.white);
+		colors.Add (Color.green);
+		GetComponentInChildren<TextMesh> ().color = colors[Random.Range(1,colors.Count)-1];
 		KeyboardTyper.keyTyped.AddListener(MatchCharacter);
 	}
     
