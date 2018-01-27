@@ -6,38 +6,42 @@ using UnityEngine.Events;
 
 public class StringReader : MonoBehaviour {
 
+    public class WordCompletedEvent : UnityEvent {}
+    public class WordPartialEvent : UnityEvent<string, string> {};
+
+    public WordCompletedEvent WordCompleted = new WordCompletedEvent();
+    public WordPartialEvent WordPartial = new WordPartialEvent();
+
+
     private static readonly Regex allButTextRegex = new Regex("[^a-zA-Z]");
-    private string s;
-    private string sLeft;
-	public bool isCompleted {
-		get;
-		set;
-	}
+    private string originalWord;
+    private string remainingWord;
+
+    public string Word {
+        get {
+            return originalWord;
+        }
+    }
 
     protected void MatchCharacter(char c) {
-        if (sLeft.StartsWith(c.ToString())) {
+        if (remainingWord.StartsWith(c.ToString())) {
             // Trigger success
-            if (sLeft.Length > 1) {
-                sLeft = sLeft.Substring(1);
-                Debug.Log("Remaining: " + sLeft);
-                GetComponentInChildren<TextMesh>().text = sLeft;
+            if (remainingWord.Length > 1) {
+                remainingWord = remainingWord.Substring(1);
+                Debug.Log("Remaining: " + remainingWord);
+                GetComponentInChildren<TextMesh>().text = remainingWord;
+                WordPartial.Invoke(originalWord, remainingWord);
             } else {
                 // Trigger completed
-                Debug.Log("word " + s + " completed!");
-				isCompleted = true;
-                GetComponent<Pigeon>().Kill();
+                Debug.Log("Word " + originalWord + " completed!");
+                WordCompleted.Invoke();
             }
         }
     }
 
-	// Use this for initialization
-	void Start () {
-		isCompleted = false;
-	}
-
 	public void Enable (string text) {
-        s = sLeft = allButTextRegex.Replace(text.ToLower(),"");;
-        GetComponentInChildren<TextMesh>().text = sLeft;
+        originalWord = remainingWord = allButTextRegex.Replace(text.ToLower(),"");;
+        GetComponentInChildren<TextMesh>().text = remainingWord;
 		KeyboardTyper.keyTyped.AddListener(MatchCharacter);
 	}
     

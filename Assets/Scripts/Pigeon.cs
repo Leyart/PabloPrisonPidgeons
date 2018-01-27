@@ -1,8 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Pigeon : MonoBehaviour, IKillable, IFlyable{
+
+	public class PigeonArrivedEvent : UnityEvent<string> {}
+	public class PigeonKilledEvent : UnityEvent<string> {};
+	public class PigeonHitEvent : UnityEvent<int> {};
+
+	public PigeonArrivedEvent PigeonArrived = new PigeonArrivedEvent();
+	public PigeonKilledEvent PigeonKilled = new PigeonKilledEvent();
+	public PigeonHitEvent PigeonHit = new PigeonHitEvent();
 
 	public float speed;
 
@@ -14,10 +23,14 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	StringReader reader;
 	ArrayList pathPoints;
 
-
 	void Awake() {
 		reader = this.GetComponent<StringReader>();
-		speed = Random.Range(0.05f, 0.08f);
+		speed = Random.Range(0.10f, 0.20f);
+
+		reader.WordCompleted.AddListener(Kill);
+		reader.WordPartial.AddListener((word, partial) => {
+			PigeonHit.Invoke(word.Length - partial.Length);
+		});
 	}
 
 	// Use this for initialization
@@ -31,11 +44,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	}
 
 	void Update() {
-		// path.getUpdatedPosition (x,y, speed);
 		Fly();
-		//Vector2 pos = new Vector2 (this.transform.position.x + 1 / 10, this.transform.position.y);
-
-
 	}
 
 	public void SendPigeon(string text) {
@@ -51,16 +60,17 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 				pathPoints.RemoveAt(0);
 			}
 		} else {
-				ArrivedAtTheEnd();
-				Kill();
+			ArrivedAtTheEnd();
 		}
 	}
 
-	public void ArrivedAtTheEnd() {
-		// Do something!
+	void ArrivedAtTheEnd() {
+		PigeonArrived.Invoke(reader.Word);
+		Destroy (gameObject);
 	}
 
 	public void Kill() {
+		PigeonKilled.Invoke(reader.Word);
 		Destroy (gameObject);
 	}
 }
