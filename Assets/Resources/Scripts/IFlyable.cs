@@ -1,6 +1,0 @@
-﻿
-interface IFlyable
-{
-	void Fly();
-}
-	
