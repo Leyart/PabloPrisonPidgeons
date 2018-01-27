@@ -20,14 +20,11 @@ public class CatmullRomSpline : MonoBehaviour
 		controlPointsList.Add (pointEnd);
 		Vector2 pointEndOffset = new Vector2 (posRU.x+10,posLB.y/2);
 		controlPointsList.Add (pointEndOffset);
-
-
-
-
+		CreateLine ();
 	}
 
 	//Display without having to press play
-	/*void OnDrawGizmos()
+	void CreateLine()
 	{
 		Gizmos.color = Color.red;
 
@@ -46,7 +43,6 @@ public class CatmullRomSpline : MonoBehaviour
 			DisplayCatmullRomSpline(i);
 		}
 	}
-*/
 	//Display a spline between 2 points derived with the Catmull-Rom spline algorithm
 	void DisplayCatmullRomSpline(int pos)
 	{
