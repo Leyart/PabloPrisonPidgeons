@@ -8,12 +8,10 @@ public class PigeonSpawner : MonoBehaviour {
 	public GameObject pigeon;
 	public GameObject pigeonHolder;
 	public GameObject path;
-	 void Start() {
-		loadGameLevel (1);
-	}
+
 
   
-	void loadGameLevel(int level ) {
+	public void loadGameLevel(int level ) {
 		TextLevelHelper levelHelper = new TextLevelHelper(level);
 		string [] tokens =  levelHelper.GetTokens ();
 		for (int i = 0; i < tokens.Length; i++) {
