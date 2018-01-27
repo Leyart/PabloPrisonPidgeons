@@ -417,6 +417,10 @@ namespace Twitter
         {
                 string url = "https://api.twitter.com/1.1/search/tweets.json";
 
+				List<String> forbiddenHash = new List<String>();
+				forbiddenHash.Add (hashtag);
+				forbiddenHash.Add ("GGJ18");
+				forbiddenHash.Add ("GGJ");
 
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
@@ -455,47 +459,51 @@ namespace Twitter
                 Debug.Log("Url posted to web is " + url);
 
                 WWW web = new WWW(url, null, headers);
-			WaitForSeconds w;
-			while (!web.isDone)
-				w = new WaitForSeconds(0.1f);
-			Debug.Log("GetTimeline - " + web.text);
+				WaitForSeconds w;
+				while (!web.isDone)
+					w = new WaitForSeconds(0.1f);
+				Debug.Log("GetTimeline - " + web.text);
 
 
-			var tweets = JSON.Parse(web.text);
-			string[] toReturn = new string[tweets.Count];
-			Debug.Log("# of Tweets: " + tweets["statuses"].Count);
-			for (int i=0; i< tweets["statuses"].Count; i++)
-			{
-				string text = tweets["statuses"] [i] ["text"];
-				toReturn[i]=text.Replace ("#"+hashtag, "");
-				toReturn[i]=toReturn [i].Trim ();
-				Debug.Log("Tweet #" + i +" "+ toReturn[i]);
-			}
+				var tweets = JSON.Parse(web.text);
+				string[] toReturn = new string[tweets.Count];
+				Debug.Log("# of Tweets: " + tweets["statuses"].Count);
+				for (int i=0; i< tweets["statuses"].Count; i++)
+				{
+					string text = tweets["statuses"] [i] ["text"];
+					foreach (string key in forbiddenHash)
+					{
+						string realHash = "#" + key;
+						text=text.Replace (realHash, "");
+					}
+					toReturn[i]=text.Trim ();
+					Debug.Log("Tweet #" + i +" "+ toReturn[i]);
+				}
 
-                //WWW web = new WWW(GetTimelineURL, dummmy, headers);
-                //yield return web;
+	                //WWW web = new WWW(GetTimelineURL, dummmy, headers);
+	                //yield return web;
 
-                if (!string.IsNullOrEmpty(web.error))
-                {
-                    Debug.Log(string.Format("GetTimeline1 - web error - failed. {0}\n{1}", web.error, web.text));
-                    callback(false,null);
-                }
-                else
-                {
-                    string error = Regex.Match(web.text, @"<error>([^&]+)</error>").Groups[1].Value;
+	                if (!string.IsNullOrEmpty(web.error))
+	                {
+	                    Debug.Log(string.Format("GetTimeline1 - web error - failed. {0}\n{1}", web.error, web.text));
+	                    callback(false,null);
+	                }
+	                else
+	                {
+	                    string error = Regex.Match(web.text, @"<error>([^&]+)</error>").Groups[1].Value;
 
-                    if (!string.IsNullOrEmpty(error))
-                    {
-                        Debug.Log(string.Format("GetTimeline - bad response - failed. {0}", error));
-                        callback(false,null);
-                    }
-                    else
-                    {
-					callback(true,toReturn);
-                    }
-                }
-               
-			yield return web;
+	                    if (!string.IsNullOrEmpty(error))
+	                    {
+	                        Debug.Log(string.Format("GetTimeline - bad response - failed. {0}", error));
+	                        callback(false,null);
+	                    }
+	                    else
+	                    {
+						callback(true,toReturn);
+	                    }
+	                }
+	               
+				yield return web;
             }
 
         #endregion
