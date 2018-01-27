@@ -380,7 +380,7 @@ namespace Twitter
 			string[] toReturn = new string[tweets.Count];
 			Debug.Log("# of Tweets: " + tweets.Count);
 			for (int i=0; i< tweets.Count; i++)
-			{
+			 {
 				
 				string text = tweets [i] ["text"];
 				toReturn[i]=text.Replace ("@"+userId, "");
