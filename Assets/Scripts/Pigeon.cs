@@ -12,9 +12,12 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	System.Guid id;
 	GameObject path;
 	StringReader reader;
+	ArrayList pathPoints;
+
 
 	void Awake() {
 		reader = this.GetComponent<StringReader>();
+		speed = Random.Range(0.05f, 0.08f);
 	}
 
 	// Use this for initialization
@@ -24,6 +27,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 		Vector2 startPos = new Vector2 (posLB.x,  Random.Range(posLB.y, posRU.y));
 		this.transform.position = startPos;
 		this.id =  System.Guid.NewGuid();
+		pathPoints = GetComponentInChildren<CatmullRomSpline>().path;
 	}
 
 	void Update() {
@@ -39,13 +43,25 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	}
 
 	public void Fly() {
-		this.transform.Translate (0.01f,0,0);
+		if (pathPoints != null && pathPoints.Count > 0) {
+			if (Vector2.Distance(this.transform.position, (Vector2) pathPoints[0]) > 0.2f) {
+				Vector2 nextPos = Vector2.MoveTowards(this.transform.position, (Vector2) pathPoints[0], speed);
+				this.transform.position = nextPos;
+			} else {
+				pathPoints.RemoveAt(0);
+			}
+		} else {
+				ArrivedAtTheEnd();
+				Kill();
+		}
 		Debug.Log ("coo from "+this.id.ToString()+ "with text: "+text);
 	}
 
+	public void ArrivedAtTheEnd() {
+		// Do something!
+	}
+
 	public void Kill() {
-		if (this.reader.isCompleted) {
-			Destroy (gameObject);
-		}
+		Destroy (gameObject);
 	}
 }
