@@ -53,6 +53,7 @@ public class TwitterMenu : MonoBehaviour
     string m_PIN = "Please enter your PIN here.";
     string m_Tweet = "Please enter your tweet here.";
 	bool isAuthenticated = false;
+	bool isActive = false;
 
 	// Use this for initialization
 	void Start() 
@@ -68,87 +69,84 @@ public class TwitterMenu : MonoBehaviour
     // GUI
     void OnGUI()
     {
-        // LogIn/Register Button
-        Rect rect = new Rect(Screen.width * USER_LOG_IN_X,
-                             Screen.height * USER_LOG_IN_Y,
-                             Screen.width * USER_LOG_IN_WIDTH,
-                             Screen.height * USER_LOG_IN_HEIGHT);
+		if (isActive) {
+			// LogIn/Register Button
+			Rect rect = new Rect (Screen.width * USER_LOG_IN_X,
+				                 Screen.height * USER_LOG_IN_Y,
+				                 Screen.width * USER_LOG_IN_WIDTH,
+				                 Screen.height * USER_LOG_IN_HEIGHT);
 
-        if (string.IsNullOrEmpty(CONSUMER_KEY) || string.IsNullOrEmpty(CONSUMER_SECRET))
-        {
-            string text = "You need to register your game or application first.\n Click this button, register and fill CONSUMER_KEY and CONSUMER_SECRET of Demo game object.";
-            if (GUI.Button(rect, text))
-            {
-                Application.OpenURL("http://dev.twitter.com/apps/new");
-            }
-        }
-        else
-        {
-            string text = string.Empty;
+			if (string.IsNullOrEmpty (CONSUMER_KEY) || string.IsNullOrEmpty (CONSUMER_SECRET)) {
+				string text = "You need to register your game or application first.\n Click this button, register and fill CONSUMER_KEY and CONSUMER_SECRET of Demo game object.";
+				if (GUI.Button (rect, text)) {
+					Application.OpenURL ("http://dev.twitter.com/apps/new");
+				}
+			} else {
+				string text = string.Empty;
 
-            if (!string.IsNullOrEmpty(m_AccessTokenResponse.ScreenName))
-            {
-                text = m_AccessTokenResponse.ScreenName + "\nClick to register with a different Twitter account";
-            }
+				if (!string.IsNullOrEmpty (m_AccessTokenResponse.ScreenName)) {
+					text = m_AccessTokenResponse.ScreenName + "\nClick to register with a different Twitter account";
+				} else {
+					text = "You need to register your game or application first.";
+				}
 
-            else
-            {
-                text = "You need to register your game or application first.";
-            }
-
-            if (GUI.Button(rect, text))
-            {
-                StartCoroutine(Twitter.API.GetRequestToken(CONSUMER_KEY, CONSUMER_SECRET,
-                                                           new Twitter.RequestTokenCallback(this.OnRequestTokenCallback)));
-            }
-        }
-
-		if (!this.isAuthenticated) {
-			// PIN Input
-			rect.x = Screen.width * PIN_INPUT_X;
-			rect.y = Screen.height * PIN_INPUT_Y;
-			rect.width = Screen.width * PIN_INPUT_WIDTH;
-			rect.height = Screen.height * PIN_INPUT_HEIGHT;
-
-			m_PIN = GUI.TextField (rect, m_PIN);
-
-			// PIN Enter Button
-			rect.x = Screen.width * PIN_ENTER_X;
-			rect.y = Screen.height * PIN_ENTER_Y;
-			rect.width = Screen.width * PIN_ENTER_WIDTH;
-			rect.height = Screen.height * PIN_ENTER_HEIGHT;
-
-			if (GUI.Button (rect, "Enter PIN")) {
-				StartCoroutine (Twitter.API.GetAccessToken (CONSUMER_KEY, CONSUMER_SECRET, m_RequestTokenResponse.Token, m_PIN,
-					new Twitter.AccessTokenCallback (this.OnAccessTokenCallback)));
+				if (GUI.Button (rect, text)) {
+					StartCoroutine (Twitter.API.GetRequestToken (CONSUMER_KEY, CONSUMER_SECRET,
+						new Twitter.RequestTokenCallback (this.OnRequestTokenCallback)));
+				}
 			}
 
-		}
+			if (!this.isAuthenticated) {
+				// PIN Input
+				rect.x = Screen.width * PIN_INPUT_X;
+				rect.y = Screen.height * PIN_INPUT_Y;
+				rect.width = Screen.width * PIN_INPUT_WIDTH;
+				rect.height = Screen.height * PIN_INPUT_HEIGHT;
 
-		//GUI TO POST TWEETS
-		if (false) {
+				m_PIN = GUI.TextField (rect, m_PIN);
 
-			// Tweet Input
-			rect.x = Screen.width * TWEET_INPUT_X;
-			rect.y = Screen.height * TWEET_INPUT_Y;
-			rect.width = Screen.width * TWEET_INPUT_WIDTH;
-			rect.height = Screen.height * TWEET_INPUT_HEIGHT;
+				// PIN Enter Button
+				rect.x = Screen.width * PIN_ENTER_X;
+				rect.y = Screen.height * PIN_ENTER_Y;
+				rect.width = Screen.width * PIN_ENTER_WIDTH;
+				rect.height = Screen.height * PIN_ENTER_HEIGHT;
 
-			m_Tweet = GUI.TextField (rect, m_Tweet);
+				if (GUI.Button (rect, "Enter PIN")) {
+					StartCoroutine (Twitter.API.GetAccessToken (CONSUMER_KEY, CONSUMER_SECRET, m_RequestTokenResponse.Token, m_PIN,
+						new Twitter.AccessTokenCallback (this.OnAccessTokenCallback)));
+				}
 
-			// Post Tweet Button
-			rect.x = Screen.width * POST_TWEET_X;
-			rect.y = Screen.height * POST_TWEET_Y;
-			rect.width = Screen.width * POST_TWEET_WIDTH;
-			rect.height = Screen.height * POST_TWEET_HEIGHT;
-
-			if (GUI.Button (rect, "Post Tweet")) {
-				StartCoroutine (Twitter.API.PostTweet (m_Tweet, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
-					new Twitter.PostTweetCallback (this.OnPostTweet)));
 			}
 
+			//GUI TO POST TWEETS
+			if (false) {
+
+				// Tweet Input
+				rect.x = Screen.width * TWEET_INPUT_X;
+				rect.y = Screen.height * TWEET_INPUT_Y;
+				rect.width = Screen.width * TWEET_INPUT_WIDTH;
+				rect.height = Screen.height * TWEET_INPUT_HEIGHT;
+
+				m_Tweet = GUI.TextField (rect, m_Tweet);
+
+				// Post Tweet Button
+				rect.x = Screen.width * POST_TWEET_X;
+				rect.y = Screen.height * POST_TWEET_Y;
+				rect.width = Screen.width * POST_TWEET_WIDTH;
+				rect.height = Screen.height * POST_TWEET_HEIGHT;
+
+				if (GUI.Button (rect, "Post Tweet")) {
+					StartCoroutine (Twitter.API.PostTweet (m_Tweet, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
+						new Twitter.PostTweetCallback (this.OnPostTweet)));
+				}
+
+			}
 		}
     }
+
+	public void setActive(bool value) {
+		this.isActive = value;
+	}
 
 
     void LoadTwitterUserInfo()
