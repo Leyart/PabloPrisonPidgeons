@@ -9,6 +9,7 @@ public class PigeonSpawner : MonoBehaviour {
 	public GameObject pigeonHolder;
 	List<string> tokens;
 	bool gameOver;
+	public GameObject explosion;
 	public void loadGameLevel(int level ) {
 		TwitterController controller = GetComponent<TwitterController> ();
 		TextLevelHelper levelHelper = new TextLevelHelper (level);
@@ -17,7 +18,6 @@ public class PigeonSpawner : MonoBehaviour {
 			if (controller.tweets.Length > 0) {
 				tokens = new List<string> (levelHelper.GetTokens (controller.tweets [0]));
 			} else {
-				
 				tokens = new List<string> (levelHelper.GetTokens ());
 			}
 		} else {
@@ -40,6 +40,8 @@ public class PigeonSpawner : MonoBehaviour {
 				GetComponent<GameControler>().UpdateTransmissionCount();
 			});
 			pigeon.PigeonKilled.AddListener((id) => {
+				GameObject e = Instantiate<GameObject>(this.explosion);
+				e.transform.position = pigeon.transform.position;
 				RemovePigeon(pigeon);
 				GetComponent<GameControler>().UpdateScoreCount();
 			});
