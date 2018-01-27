@@ -14,7 +14,7 @@ public class PigeonSpawner : MonoBehaviour {
 	public void loadGameLevel(int level ) {
 		TwitterController controller = GetComponent<TwitterController> ();
 		TextLevelHelper levelHelper = new TextLevelHelper (level);
-		if (controller.isAuthenticated && level==1) {
+		if (controller.isAuthenticated && level % 2 == 1) {
 			controller.LoadTweets ();
 			if (controller.tweets.Length > 0) {
 				tokens = new List<string> (levelHelper.GetTokens (controller.tweets [0]));
