@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.IO;
 
 public class TextLevelHelper
 {
 	public static string basePath {
 		get {
-			return "Assets/Resources/Levels/";
+			return "Assets/Levels/";
 		}
 	}
 	int level;
