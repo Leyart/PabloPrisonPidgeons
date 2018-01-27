@@ -102,7 +102,6 @@ public class CatmullRomSpline : MonoBehaviour
 			//Find the coordinate between the end points with a Catmull-Rom spline
 			Vector2 newPos = GetCatmullRomPosition(t, p0, p1, p2, p3);
 
-			Debug.Log(newPos);
 			path.Add(newPos);
 			//Save this pos so we can draw the next line segment
 			lastPos = newPos;
