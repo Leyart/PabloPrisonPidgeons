@@ -1470,7 +1470,7 @@ Prefab:
     - target: {fileID: 102290756943107260, guid: 47678d343488a4cff95bf1f5344584e3,
         type: 2}
       propertyPath: m_Text
-      value: Benga, Pablo!
+      value: Venga, Pablo!
       objectReference: {fileID: 0}
     - target: {fileID: 4342537211923286, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
       propertyPath: m_LocalPosition.x
