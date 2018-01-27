@@ -11,25 +11,34 @@ public class Pigeon : MonoBehaviour {
 	public string text;
 	public Object path;
 
-
-	/*public Pigeon() {
-		return new Pigeon();
-	}
-*/
 	// Use this for initialization
 	void Start () {
 		Vector2 posLB = Camera.main.ViewportToWorldPoint (new Vector2 (0, 0));
 		Vector2 posRU = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
-		Vector2 startPos = new Vector2 (posLB.x, posLB.y + Random.Range(posLB.y, posRU.y));
+		Vector2 startPos = new Vector2 (posLB.x,  Random.Range(posLB.y, posRU.y));
 		this.transform.position = startPos;
+
+		CreatPath ();
+
+
 	}
 
+
+	void CreatPath(){
+		GameObject emptyGameObject = new GameObject ();
+		int numberOfSphere = Random.Range (4, 20);
+
+		path = emptyGameObject;
+	
+	}
 
 	void Update() {
 		// path.getUpdatedPosition (x,y, speed);
 
 		//Vector2 pos = new Vector2 (this.transform.position.x + 1 / 10, this.transform.position.y);
 		this.transform.Translate (0.01f,0,0);
+
+
 
 	}
 

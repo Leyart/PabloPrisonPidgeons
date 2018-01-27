@@ -6,8 +6,6 @@ public class CatmullRomSpline : MonoBehaviour
 {
 	//Has to be at least 4 points
 	public Transform[] controlPointsList;
-	//Are we making a line or a loop?
-	public bool isLooping = true;
 
 	//Display without having to press play
 	void OnDrawGizmos()
@@ -21,7 +19,7 @@ public class CatmullRomSpline : MonoBehaviour
 			//Cant draw between the endpoints
 			//Neither do we need to draw from the second to the last endpoint
 			//...if we are not making a looping line
-			if ((i == 0 || i == controlPointsList.Length - 2 || i == controlPointsList.Length - 1) && !isLooping)
+			if ((i == 0 || i == controlPointsList.Length - 2 || i == controlPointsList.Length - 1))
 			{
 				continue;
 			}

@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour {
-	List<GameObject> pidgeons = new List<GameObject>();
-	public GameObject pidgeon;
-	public GameObject pidgeonHolder;
+	List<GameObject> pigeons = new List<GameObject>();
+	public GameObject pigeon;
+	public GameObject pigeonHolder;
 	 void Start() {
 		loadGameLevel (1);
 	}
@@ -16,8 +16,8 @@ public class LoadScene : MonoBehaviour {
 		TextLevelHelper levelHelper = new TextLevelHelper(level);
 		string [] tokens =  levelHelper.GetTokens ();
 		for (int i = 0; i < tokens.Length; i++) {
-			GameObject instance = Instantiate(pidgeon);
-			pidgeons.Add (instance);
+			GameObject instance = Instantiate(pigeon);
+			pigeons.Add (instance);
 
 		}
 	}
