@@ -4,20 +4,42 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PigeonSpawner : MonoBehaviour {
-	List<GameObject> pigeons = new List<GameObject>();
-	public GameObject pigeon;
+	List<Pigeon> pigeons = new List<Pigeon>();
+	public Pigeon pigeon;
 	public GameObject pigeonHolder;
-
-
+	List<string> tokens;
   
 	public void loadGameLevel(int level ) {
 		TextLevelHelper levelHelper = new TextLevelHelper(level);
-		string [] tokens =  levelHelper.GetTokens ();
-		for (int i = 0; i < tokens.Length; i++) {
-			GameObject pigeonInstance = Instantiate(pigeon);
-			Pigeon pigeonScript = ((Pigeon)pigeonInstance.GetComponentInChildren<Pigeon> ());
-			pigeonScript.SendPigeon (tokens [i]);
-			pigeons.Add (pigeonInstance);
+		tokens = new List<string>(levelHelper.GetTokens ());
+
+		SpawnNextPigeon();
+	}
+
+	void SpawnNextPigeon() {
+		if (tokens.Count > 0) {
+			string word = tokens[0];
+			tokens.RemoveAt(0);
+
+			Pigeon pigeon = Instantiate<Pigeon>(this.pigeon);
+
+			// events
+			pigeon.PigeonArrived.AddListener((id) => {
+				RemovePigeon(pigeon);
+			});
+			pigeon.PigeonKilled.AddListener((id) => {
+				RemovePigeon(pigeon);
+			});
+
+			// tracking
+			pigeons.Add (pigeon);
+
+			pigeon.SendPigeon(word);
 		}
+	}
+
+	void RemovePigeon(Pigeon pigeon) {
+		pigeons.Remove(pigeon);
+		SpawnNextPigeon();
 	}
 }

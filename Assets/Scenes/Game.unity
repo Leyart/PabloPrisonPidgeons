@@ -146,9 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62cb86ce97ca541bd9670e5d91816773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pigeon: {fileID: 1785472924886838, guid: 08fea7b973b7440ffafbcb496dc5b7ec, type: 2}
+  pigeon: {fileID: 114595485636773776, guid: 08fea7b973b7440ffafbcb496dc5b7ec, type: 2}
   pigeonHolder: {fileID: 654619698}
-  path: {fileID: 0}
 --- !u!81 &238415785
 AudioListener:
   m_ObjectHideFlags: 0

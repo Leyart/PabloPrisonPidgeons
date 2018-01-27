@@ -59,7 +59,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 		}
 	}
 
-	public void ArrivedAtTheEnd() {
+	void ArrivedAtTheEnd() {
 		PigeonArrived.Invoke(reader.Word);
 		Destroy (gameObject);
 	}
