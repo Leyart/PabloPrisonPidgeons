@@ -7,6 +7,7 @@ public class LoadScene : MonoBehaviour {
 	List<GameObject> pigeons = new List<GameObject>();
 	public GameObject pigeon;
 	public GameObject pigeonHolder;
+	public GameObject path;
 	 void Start() {
 		loadGameLevel (1);
 	}
@@ -16,9 +17,10 @@ public class LoadScene : MonoBehaviour {
 		TextLevelHelper levelHelper = new TextLevelHelper(level);
 		string [] tokens =  levelHelper.GetTokens ();
 		for (int i = 0; i < tokens.Length; i++) {
-			GameObject instance = Instantiate(pigeon);
-			pigeons.Add (instance);
-
+			GameObject pigeonInstance = Instantiate(pigeon);
+			GameObject pathInstance = Instantiate(path);
+			((Pigeon)pigeonInstance.GetComponentInChildren<Pigeon> ()).setPath(pathInstance);
+			pigeons.Add (pigeonInstance);
 		}
 	}
 }

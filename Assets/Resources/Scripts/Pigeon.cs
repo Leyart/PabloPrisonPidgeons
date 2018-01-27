@@ -10,6 +10,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	public Vector3 rotation;
 	public string text;
 	System.Guid id;
+	GameObject path;
 	StringReader reader;
 
 
@@ -20,11 +21,15 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 		Vector2 startPos = new Vector2 (posLB.x,  Random.Range(posLB.y, posRU.y));
 		this.transform.position = startPos;
 		this.id =  System.Guid.NewGuid();
-		this.reader = GetComponent<StringReader> ();
+		StringReader reader = GetComponentInChildren<StringReader> ();
+		TextLevelHelper levelHelper = new TextLevelHelper (Random.Range (1, 5));
+		reader.Enable (levelHelper.GetTokens () [0]);
 	}
 
 
-
+	public void setPath(GameObject path){
+		this.path = path;
+	}
 	void Update() {
 		// path.getUpdatedPosition (x,y, speed);
 		Fly();
