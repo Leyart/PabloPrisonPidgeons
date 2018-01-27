@@ -40,7 +40,7 @@ public class StringReader : MonoBehaviour {
 		isCompleted = false;
 	}
 
-	void Enable (string text) {
+	public void Enable (string text) {
 		s = text;
 		KeyboardTyper.keyTyped.AddListener(MatchCharacter);
 	}

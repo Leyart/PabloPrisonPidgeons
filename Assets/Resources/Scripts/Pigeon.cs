@@ -19,10 +19,9 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 		Vector2 startPos = new Vector2 (posLB.x,  Random.Range(posLB.y, posRU.y));
 		this.transform.position = startPos;
 		this.id =  System.Guid.NewGuid();
-
-	   //TextLevelHelper levelHelper = new TextLevelHelper (Random.Range (1, 5));
-		//levelHelper.GetTokens () [0];
-
+		StringReader reader = GetComponent<StringReader> ();
+		TextLevelHelper levelHelper = new TextLevelHelper (Random.Range (1, 5));
+		reader.Enable (levelHelper.GetTokens () [0]);
 	}
 
 
