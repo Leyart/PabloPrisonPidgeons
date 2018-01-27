@@ -17,13 +17,20 @@ public class StringReader : MonoBehaviour {
     private string originalWord;
     private string remainingWord;
 
+	private bool gameOver;
+
     public string Word {
         get {
             return originalWord;
         }
     }
-
+	public void GameOver(){
+		gameOver = true;
+	}
     protected void MatchCharacter(char c) {
+		if (gameOver) {
+			return;
+		}
         if (remainingWord.StartsWith(c.ToString())) {
             // Trigger success
             if (remainingWord.Length > 1) {

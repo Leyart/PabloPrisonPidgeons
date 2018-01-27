@@ -23,7 +23,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	public string text;
 	System.Guid id;
 	GameObject path;
-	StringReader reader;
+	public StringReader reader;
 	ArrayList pathPoints;
 
 	void Awake() {
