@@ -34,7 +34,7 @@ public class GameControler : MonoBehaviour {
 		
 	}
 	private void UpdateScoreView(){
-		scoreText.GetComponent<TextMesh>().text =  "Points : " + score;
+		scoreText.GetComponent<TextMesh>().text = " " +score;
 	}
 	public void UpdateScoreCount(){
 		score++;
@@ -43,7 +43,7 @@ public class GameControler : MonoBehaviour {
 
 
 	private void UpdateTransmissionView(){
-		transmittedMessages.GetComponent<TextMesh>().text =  "Transmitted Messages: " + transmittedMessagesCount;
+		transmittedMessages.GetComponent<TextMesh>().text = " " + transmittedMessagesCount;
 	}
 	public void UpdateTransmissionCount(){
 		transmittedMessagesCount++;
