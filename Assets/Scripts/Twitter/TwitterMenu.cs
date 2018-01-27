@@ -14,6 +14,8 @@ public class TwitterMenu : MonoBehaviour
 
 	public GameObject StartButton;
 
+	public GameObject HeaderButton;
+
 
     // You need to register your game or application in Twitter to get cosumer key and secret.
     // Go to this page for registration: http://dev.twitter.com/apps/new
@@ -42,6 +44,7 @@ public class TwitterMenu : MonoBehaviour
 	// Use this for initialization
 	void Start() 
     {
+		isActive = false;
         LoadTwitterUserInfo();
 	}
 
@@ -51,6 +54,7 @@ public class TwitterMenu : MonoBehaviour
 		if (isActive) {
 			UserLogInButton.SetActive (false);
 			StartButton.SetActive (true);
+			HeaderButton.SetActive (true);
 			isActive = false;
 			return;
 		}
@@ -69,6 +73,7 @@ public class TwitterMenu : MonoBehaviour
 
 		UserLogInButton.SetActive (true);
 		StartButton.SetActive (false);
+		HeaderButton.SetActive (false);
 	}
 
 
@@ -98,39 +103,11 @@ public class TwitterMenu : MonoBehaviour
 		UserLogInButton.SetActive (false);
 		PinEnter.SetActive (false);
 		StartButton.SetActive (true);
+		HeaderButton.SetActive (true);
 		isActive = false;
 	}
 
-    // GUI
-    void OnGUI()
-	{
-		
-
-			//GUI TO POST TWEETS
-			/*if (false) {
-
-				// Tweet Input
-				rect.x = Screen.width * TWEET_INPUT_X;
-				rect.y = Screen.height * TWEET_INPUT_Y;
-				rect.width = Screen.width * TWEET_INPUT_WIDTH;
-				rect.height = Screen.height * TWEET_INPUT_HEIGHT;
-
-				m_Tweet = GUI.TextField (rect, m_Tweet);
-
-				// Post Tweet Button
-				rect.x = Screen.width * POST_TWEET_X;
-				rect.y = Screen.height * POST_TWEET_Y;
-				rect.width = Screen.width * POST_TWEET_WIDTH;
-				rect.height = Screen.height * POST_TWEET_HEIGHT;
-
-				if (GUI.Button (rect, "Post Tweet")) {
-					StartCoroutine (Twitter.API.PostTweet (m_Tweet, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
-						new Twitter.PostTweetCallback (this.OnPostTweet)));
-				}
-
-			}
-		}*/
-	}
+  
 
 	public void setActive() {
 		this.isActive = !this.isActive;

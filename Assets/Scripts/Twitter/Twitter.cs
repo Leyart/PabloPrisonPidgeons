@@ -466,7 +466,7 @@ namespace Twitter
 
 
 				var tweets = JSON.Parse(web.text);
-				string[] toReturn = new string[tweets.Count];
+			    string[] toReturn = new string[tweets["statuses"].Count];
 				Debug.Log("# of Tweets: " + tweets["statuses"].Count);
 				for (int i=0; i< tweets["statuses"].Count; i++)
 				{

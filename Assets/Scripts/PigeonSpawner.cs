@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class PigeonSpawner : MonoBehaviour {
 	List<Pigeon> pigeons = new List<Pigeon>();
 	public Pigeon pigeon;
-	public GameObject pigeonHolder;
 	List<string> tokens;
 	bool gameOver;
 	public GameObject explosion;
+
 	public void loadGameLevel(int level ) {
 		TwitterController controller = GetComponent<TwitterController> ();
 		TextLevelHelper levelHelper = new TextLevelHelper (level);

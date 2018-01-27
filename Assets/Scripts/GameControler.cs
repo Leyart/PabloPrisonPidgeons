@@ -16,8 +16,10 @@ public class GameControler : MonoBehaviour {
 	private Animator scoreAnimator;
 	private Animator transmittedAnimator;
 	PigeonSpawner spawner;
+	private bool isGameStarted = false;
 
 	public void StartGame(){
+		isGameStarted = true;
 		canvas.enabled = false;
 		spawner = GetComponent<PigeonSpawner> ();
 		spawner.loadGameLevel (level);
@@ -41,8 +43,10 @@ public class GameControler : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (spawner.noMorePigeon ()) {
-			NextLevel();
+		if (isGameStarted) {
+			if (spawner.noMorePigeon ()) {
+				NextLevel ();
+			}
 		}
 	}
 	private void UpdateScoreView(){
