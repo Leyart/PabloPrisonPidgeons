@@ -6,20 +6,12 @@ using UnityEngine.Events;
 
 public class StringReader : MonoBehaviour {
 
-    public StringReader(string s) {
-        this.s = sLeft = s;
-    }
-    public string s;
+    private string s;
     private string sLeft;
 	public bool isCompleted {
 		get;
 		set;
 	}
-
-    void Awake() {
-		
-		sLeft = s;
-    }
 
     protected void MatchCharacter(char c) {
         if (sLeft.StartsWith(c.ToString())) {
@@ -41,7 +33,7 @@ public class StringReader : MonoBehaviour {
 	}
 
 	public void Enable (string text) {
-		s = text;
+		s = sLeft = text.ToLower();
 		KeyboardTyper.keyTyped.AddListener(MatchCharacter);
 	}
     
