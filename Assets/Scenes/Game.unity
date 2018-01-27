@@ -1786,30 +1786,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1227198617}
---- !u!1 &1227541644 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1155593522843398, guid: 47678d343488a4cff95bf1f5344584e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1903410447}
---- !u!114 &1227541645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1227541644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783b642427bcc4067b532e50a7a4f2a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pigeonArrivedSentences:
-  - Ja ja ja!
-  - "El \xE9xito es la mejor venganza!"
-  - Coma mierda!
-  pigeonKilledSentences:
-  - Gringos malparidos!
-  - Mierda!
-  - Que fracaso!
 --- !u!20 &1748292066 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20477558603288182, guid: 8a501ff6267fa4882ab21dd4062adedd,
@@ -1975,70 +1951,6 @@ Prefab:
     - target: {fileID: 4121930888620990, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 102290756943107260, guid: 47678d343488a4cff95bf1f5344584e3,
-        type: 2}
-      propertyPath: m_Anchor
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 102290756943107260, guid: 47678d343488a4cff95bf1f5344584e3,
-        type: 2}
-      propertyPath: m_Alignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 102290756943107260, guid: 47678d343488a4cff95bf1f5344584e3,
-        type: 2}
-      propertyPath: m_Text
-      value: Benga, Pablo!
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342537211923286, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342537211923286, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 102290756943107260, guid: 47678d343488a4cff95bf1f5344584e3,
-        type: 2}
-      propertyPath: m_Color.rgba
-      value: 4290714763
-      objectReference: {fileID: 0}
-    - target: {fileID: 102970627040143964, guid: 47678d343488a4cff95bf1f5344584e3,
-        type: 2}
-      propertyPath: m_Color.rgba
-      value: 4278190335
-      objectReference: {fileID: 0}
-    - target: {fileID: 102564680522728410, guid: 47678d343488a4cff95bf1f5344584e3,
-        type: 2}
-      propertyPath: m_Color.rgba
-      value: 4293328745
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298166760701890, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298166760701890, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 7.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005219616337176, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005219616337176, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -3.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 224197181743697192, guid: 47678d343488a4cff95bf1f5344584e3,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -2.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 224197181743697192, guid: 47678d343488a4cff95bf1f5344584e3,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -2.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
