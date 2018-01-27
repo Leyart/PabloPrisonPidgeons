@@ -42,6 +42,8 @@ public class PigeonSpawner : MonoBehaviour {
 			pigeons.Add (pigeon);
 
 			pigeon.SendPigeon(word);
+
+			GetComponent<AudioSource>().Play();
 		}
 	}
 
