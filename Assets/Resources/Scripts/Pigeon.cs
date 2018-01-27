@@ -11,7 +11,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	public string text;
 	System.Guid id;
 	GameObject path;
-	StringReader reader;
+	public StringReader reader;
 
 
 	// Use this for initialization
@@ -21,9 +21,6 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 		Vector2 startPos = new Vector2 (posLB.x,  Random.Range(posLB.y, posRU.y));
 		this.transform.position = startPos;
 		this.id =  System.Guid.NewGuid();
-		StringReader reader = GetComponentInChildren<StringReader> ();
-		TextLevelHelper levelHelper = new TextLevelHelper (Random.Range (1, 5));
-		reader.Enable (levelHelper.GetTokens () [0]);
 	}
 
 

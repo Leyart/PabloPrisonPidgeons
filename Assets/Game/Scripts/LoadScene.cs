@@ -19,7 +19,10 @@ public class LoadScene : MonoBehaviour {
 		for (int i = 0; i < tokens.Length; i++) {
 			GameObject pigeonInstance = Instantiate(pigeon);
 			GameObject pathInstance = Instantiate(path);
-			((Pigeon)pigeonInstance.GetComponentInChildren<Pigeon> ()).setPath(pathInstance);
+			Pigeon pigeonScript = ((Pigeon)pigeonInstance.GetComponentInChildren<Pigeon> ());
+			pigeonScript.reader = pigeonInstance.GetComponentInChildren<StringReader> ();
+			pigeonScript.setPath(pathInstance);
+			pigeonScript.SendPigeon (tokens [i]);
 			pigeons.Add (pigeonInstance);
 		}
 	}
