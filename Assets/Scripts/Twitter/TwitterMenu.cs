@@ -21,15 +21,15 @@ public class TwitterMenu : MonoBehaviour
     public float PIN_ENTER_WIDTH;
     public float PIN_ENTER_HEIGHT;
 
-    public float TWEET_INPUT_X;
-    public float TWEET_INPUT_Y;
-    public float TWEET_INPUT_WIDTH;
-    public float TWEET_INPUT_HEIGHT;
+    float TWEET_INPUT_X;
+    float TWEET_INPUT_Y;
+    float TWEET_INPUT_WIDTH;
+    float TWEET_INPUT_HEIGHT;
 
-    public float POST_TWEET_X;
-    public float POST_TWEET_Y;
-    public float POST_TWEET_WIDTH;
-    public float POST_TWEET_HEIGHT;
+    float POST_TWEET_X;
+    float POST_TWEET_Y;
+    float POST_TWEET_WIDTH;
+    float POST_TWEET_HEIGHT;
 
     // You need to register your game or application in Twitter to get cosumer key and secret.
     // Go to this page for registration: http://dev.twitter.com/apps/new
@@ -146,6 +146,7 @@ public class TwitterMenu : MonoBehaviour
 
 	public void setActive() {
 		this.isActive = !this.isActive;
+		OnGUI ();
 	}
 
 
