@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5818d0532304d7aaebf5275881c078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pidgeon: {fileID: 0}
+  pidgeon: {fileID: 1785472924886838, guid: 08fea7b973b7440ffafbcb496dc5b7ec, type: 2}
   pidgeonHolder: {fileID: 0}
 --- !u!124 &124445272484853980
 Behaviour:

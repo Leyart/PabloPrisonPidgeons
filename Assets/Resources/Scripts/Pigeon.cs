@@ -4,14 +4,33 @@ using UnityEngine;
 
 public class Pigeon : MonoBehaviour {
 
+	public float speed;
+
+	// 2 elements for the rotation and 1 for the scaling.
+	public Vector3 rotation;
+	public string text;
+	public Object path;
+
+
+	/*public Pigeon() {
+		return new Pigeon();
+	}
+*/
 	// Use this for initialization
 	void Start () {
-		int x = 0;
-		int y = 200;
+		Vector2 posLB = Camera.main.ViewportToWorldPoint (new Vector2 (0, 0));
+		Vector2 posRU = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
+		Vector2 startPos = new Vector2 (posLB.x, posLB.y + Random.Range(posLB.y, posRU.y));
+		this.transform.position = startPos;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+
+	void Update() {
+		// path.getUpdatedPosition (x,y, speed);
+
+		//Vector2 pos = new Vector2 (this.transform.position.x + 1 / 10, this.transform.position.y);
+		this.transform.Translate (0.01f,0,0);
+
 	}
+
 }

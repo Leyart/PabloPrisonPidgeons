@@ -155,11 +155,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3608cfd97b0a243db882f384ff90f0e6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &440977012 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1784868454778560, guid: 08fea7b973b7440ffafbcb496dc5b7ec,
-    type: 2}
-  m_PrefabInternal: {fileID: 1714475676}
 --- !u!1 &654619698
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,11 +222,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114070996957875346, guid: 8a501ff6267fa4882ab21dd4062adedd,
-        type: 2}
-      propertyPath: pidgeon
-      value: 
-      objectReference: {fileID: 440977012}
     - target: {fileID: 114070996957875346, guid: 8a501ff6267fa4882ab21dd4062adedd,
         type: 2}
       propertyPath: pidgeonHolder

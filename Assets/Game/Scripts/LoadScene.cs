@@ -16,10 +16,7 @@ public class LoadScene : MonoBehaviour {
 		TextLevelHelper levelHelper = new TextLevelHelper(level);
 		string [] tokens =  levelHelper.GetTokens ();
 		for (int i = 0; i < tokens.Length; i++) {
-			//Transform identity = new Transform ();
-			Vector3 position = new Vector3 (i, i, 0);
-			GameObject instance = Instantiate(pidgeon, position,  Quaternion.identity);
-			instance.transform.SetParent (pidgeonHolder.transform);
+			GameObject instance = Instantiate(pidgeon);
 			pidgeons.Add (instance);
 
 		}
