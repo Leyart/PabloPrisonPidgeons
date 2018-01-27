@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PigeonSpawner : MonoBehaviour {
 	List<Pigeon> pigeons = new List<Pigeon>();
 	public Pigeon pigeon;
+	public GameObject explosion;
 	public GameObject pigeonHolder;
 	List<string> tokens;
 	bool gameOver;
@@ -14,6 +16,12 @@ public class PigeonSpawner : MonoBehaviour {
 		tokens = new List<string>(levelHelper.GetTokens ());
 		gameOver = false;
 		SpawnNextPigeon();
+	}
+
+	private IEnumerator waitThenCallback(float time, Action callback)
+	{
+		yield return new WaitForSeconds(time);
+		callback();
 	}
 
 	void SpawnNextPigeon() {
@@ -28,8 +36,14 @@ public class PigeonSpawner : MonoBehaviour {
 				RemovePigeon(pigeon);
 				GetComponent<GameControler>().UpdateTransmissionCount();
 			});
-			Pigeon.PigeonKilled.AddListener((id) => {
-				RemovePigeon(pigeon);
+			Pigeon.PigeonKilled.AddListener((id, p) => {
+				GameObject explosion = Instantiate<GameObject>(this.explosion);
+				explosion.transform.position = p.transform.position;
+				StartCoroutine(waitThenCallback(2, () => {
+					Destroy(explosion);
+				}));
+
+				RemovePigeon(p);
 				GetComponent<GameControler>().UpdateScoreCount();
 			});
 			pigeon.PigeonHit.AddListener((life) => {

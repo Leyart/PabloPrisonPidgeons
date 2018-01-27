@@ -14,7 +14,7 @@ public class Gavino : MonoBehaviour {
 			textMesh.text = pigeonArrivedSentences[Random.Range(0, pigeonArrivedSentences.Length - 1)];
 		});
 
-		Pigeon.PigeonKilled.AddListener((word) => {
+		Pigeon.PigeonKilled.AddListener((word, p) => {
 			textMesh.text = pigeonKilledSentences[Random.Range(0, pigeonKilledSentences.Length - 1)];
 		});
 	}
