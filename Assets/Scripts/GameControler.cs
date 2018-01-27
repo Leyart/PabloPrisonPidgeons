@@ -12,13 +12,14 @@ public class GameControler : MonoBehaviour {
 	private int transmittedMessagesCount;
 	private int level = 1;
 	private int maxNumberToFail = 3;
-
+	public GameObject gameOver;
 	private Animator scoreAnimator;
 	private Animator transmittedAnimator;
 	PigeonSpawner spawner;
 	private bool isGameStarted = false;
 
 	public void StartGame(){
+		gameOver.SetActive (false);
 		isGameStarted = true;
 		canvas.enabled = false;
 		spawner = GetComponent<PigeonSpawner> ();
@@ -38,6 +39,7 @@ public class GameControler : MonoBehaviour {
 	public void GameOver(){
 		GetComponent<PigeonSpawner> ().GameOver ();
 		canvas.enabled = true;
+		gameOver.SetActive (true);
 	}
 		
 
