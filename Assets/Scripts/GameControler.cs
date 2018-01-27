@@ -12,23 +12,32 @@ public class GameControler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GetComponent<PigeonSpawner> ().loadGameLevel (1);
-		score = 4;
-		transmittedMessagesCount = 1;
-		UpdateScore ();
-		UpdateTransmissionCount ();
+		score = 0;
+		transmittedMessagesCount = 0;
+		UpdateScoreView ();
+		UpdateTransmissionView ();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-	public void UpdateScore(){
-		score++;
+	private void UpdateScoreView(){
 		scoreText.GetComponent<TextMesh>().text =  "Points : " + score;
 	}
+	public void UpdateScoreCount(){
+		score++;
+		UpdateScoreView ();
+	}
 
+
+	private void UpdateTransmissionView(){
+		
+		transmittedMessages.GetComponent<TextMesh>().text =  "Transmitted Messages: " + transmittedMessagesCount;
+	}
 	public void UpdateTransmissionCount(){
 		transmittedMessagesCount++;
-		transmittedMessages.GetComponent<TextMesh>().text =  "Transmitted Messages: " + transmittedMessagesCount;
+		UpdateTransmissionView ();
 	}
 }
