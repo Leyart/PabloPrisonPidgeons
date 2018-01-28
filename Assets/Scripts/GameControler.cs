@@ -109,14 +109,19 @@ public class GameControler : MonoBehaviour
 		animator.SetTrigger ("trigger");
 		yield return new WaitForSeconds (.5f);
 		Destroy (scroll);
-	}
+	} 
 
-					
-
-	public void UpdateTwitterFeed (string userId, string imageUrl)
-	{
+	public IEnumerator UpdateTwitterFeed(string userId, string imageUrl, bool isLive) {
 		twitterFeed.SetActive (true);
 		twitterFeed.GetComponent<TextMesh> ().text = userId;
+		WWW www = new WWW(imageUrl);
+		yield return www;
+		twitterFeed.GetComponentInChildren<SpriteRenderer>()
+			.sprite = Sprite.Create(
+				www.texture,
+				new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0)
+			);
+		twitterFeed.transform.Find("Live").gameObject.SetActive(isLive);
 	}
 
 
@@ -148,5 +153,16 @@ public class GameControler : MonoBehaviour
 	public void Winning ()
 	{
 		SceneManager.LoadScene (3);
+	}
+
+
+	IEnumerator LoadImage(string url, Texture2D tex)
+	{
+		tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
+		using (WWW www = new WWW(url))
+		{
+			yield return www;
+			www.LoadImageIntoTexture(tex);
+		}
 	}
 }

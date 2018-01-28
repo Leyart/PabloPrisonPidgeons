@@ -16,7 +16,6 @@ public class TextLevelHelper
 	string[] tokens;
 	string[] textPaths;
 	string userId;
-	string imgUrl;
 	Texture2D picture;
 
 	public TextLevelHelper(int level, string userId, string imgUrl)
@@ -79,27 +78,9 @@ public class TextLevelHelper
 	public void setUserId(string userId) {
 		this.userId = userId;
 	}
-
-	public void setImgUrl(string imgUrl) {
-		this.imgUrl = imgUrl;
-	}
+		
 
 	public string getUserId() {
 		return this.userId;
-	}
-
-	public void loadTwitterPicture(Texture2D tex) {
-		LoadImage (this.imgUrl, tex);
-	}
-
-
-	IEnumerator LoadImage(string url, Texture2D tex)
-	{
-		tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
-		using (WWW www = new WWW(url))
-		{
-			yield return www;
-			www.LoadImageIntoTexture(tex);
-		}
 	}
 }

@@ -18,6 +18,7 @@ public class PigeonSpawner : MonoBehaviour {
 	public void loadGameLevel(int level ) {
 		senderName = FIXED_PABLO_NAME;
 		imgUrl = FIXED_PABLO_IMAGE;
+		bool isLiveFeed = false;
 		TwitterController controller = GetComponent<TwitterController> ();
 		TextLevelHelper levelHelper = new TextLevelHelper (level,senderName,FIXED_PABLO_IMAGE);
 		if (!controller.isTweetsLoaded()) {
@@ -25,13 +26,13 @@ public class PigeonSpawner : MonoBehaviour {
 		}
 		if (controller.isAuthenticated && level % 2 == 1) {
 			if (controller.tweets.Count > 0) {
+				isLiveFeed = true;
 				int index = Random.Range (0, controller.tweets.Count - 1);
 				senderName = controller.tweets [index].username;
 				imgUrl = controller.tweets [index].image;
 				imgUrl = imgUrl.Replace ("\\", "");
 				tokens = new List<string> (levelHelper.GetTokens (controller.tweets[index].text));
 				levelHelper.setUserId (senderName);
-				levelHelper.setImgUrl (imgUrl);
 				controller.tweets.RemoveAt (index);
 			} else {
 				string[] newTokens = levelHelper.GetTokens ();
@@ -46,7 +47,7 @@ public class PigeonSpawner : MonoBehaviour {
 		if (tokens == null || tokens.Count <= 0) {
 			GetComponent<GameControler> ().Winning ();
 		} else {
-			GetComponent<GameControler> ().UpdateTwitterFeed (senderName, imgUrl);
+			StartCoroutine(GetComponent<GameControler> ().UpdateTwitterFeed (senderName, imgUrl,isLiveFeed));
 			isGameOver = false;
 			SpawnNextPigeon ();
 		}
