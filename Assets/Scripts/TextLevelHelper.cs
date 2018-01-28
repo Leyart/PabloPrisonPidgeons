@@ -42,8 +42,7 @@ public class TextLevelHelper
 	string GetLevelText(int levelNumber,bool isText=true)
 	{
 		string toReturn = "";
-		if (levelNumber - 1 <= this.textPaths.Length) {
-			//TODO ERROR OUT OF RANGE
+		if (levelNumber - 1 < this.textPaths.Length) {
 			string path = this.textPaths [levelNumber - 1];
 			//Read the text from directly from the test.txt file
 			StreamReader reader = new StreamReader (path); 

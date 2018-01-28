@@ -31,10 +31,14 @@ public class PigeonSpawner : MonoBehaviour {
 				levelHelper.setImgUrl (imgUrl);
 				controller.tweets.RemoveAt (index);
 			} else {
-				tokens = new List<string> (levelHelper.GetTokens ());
+				string[] newTokens = levelHelper.GetTokens ();
+				tokens = new List<string> (newTokens);
 			}
 		} else {
-			tokens = new List<string> (levelHelper.GetTokens ());
+			string[] newTokens = levelHelper.GetTokens ();
+			if (newTokens != null) {
+				tokens = new List<string> (newTokens);
+			}
 		}
 		if (tokens == null || tokens.Count <= 0) {
 			GetComponent<GameControler> ().Winning ();
