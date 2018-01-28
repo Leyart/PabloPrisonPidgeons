@@ -38,7 +38,7 @@ public class GameControler : MonoBehaviour {
 
 	public void GameOver(){
 		GetComponent<PigeonSpawner> ().GameOver ();
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene (2);
 	}
 		
 
@@ -89,5 +89,6 @@ public class GameControler : MonoBehaviour {
 	}
 
 	public void Winning() {
+		SceneManager.LoadScene (3);
 	}
 }
