@@ -104,16 +104,5 @@ public class PigeonSpawner : MonoBehaviour {
 	public bool noMorePigeon(){
 		return pigeons.Count <= 0;
 	}
-
-	IEnumerator LoadImage(string url)
-	{
-		Texture2D tex;
-		tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
-		using (WWW www = new WWW(url))
-		{
-			yield return www;
-			www.LoadImageIntoTexture(tex);
-			GetComponent<Renderer>().material.mainTexture = tex;
-		}
-	}
+		
 }
