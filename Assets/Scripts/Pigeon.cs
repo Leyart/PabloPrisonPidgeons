@@ -27,7 +27,7 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 
 	void Awake() {
 		reader = this.GetComponent<StringReader>();
-		speed = Random.Range(0.10f, 0.20f);
+		speed = GamePlayConstants.instance.speedModifier +  Random.Range(0.10f, 0.20f);
 
 		reader.WordCompleted.AddListener(Kill);
 		reader.WordPartial.AddListener((word, partial) => {
