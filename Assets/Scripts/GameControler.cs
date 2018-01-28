@@ -68,9 +68,16 @@ public class GameControler : MonoBehaviour {
 
 	}
 
-	public void UpdateTwitterFeed(string userId, string imageUrl) {
+	public IEnumerator UpdateTwitterFeed(string userId, string imageUrl) {
 		twitterFeed.SetActive (true);
 		twitterFeed.GetComponent<TextMesh> ().text = userId;
+		WWW www = new WWW(imageUrl);
+		yield return www;
+		twitterFeed.GetComponentInChildren<SpriteRenderer>()
+			.sprite = Sprite.Create(
+				www.texture,
+				new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0)
+			);
 	}
 
 

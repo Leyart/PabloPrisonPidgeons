@@ -46,7 +46,7 @@ public class PigeonSpawner : MonoBehaviour {
 		if (tokens == null || tokens.Count <= 0) {
 			GetComponent<GameControler> ().Winning ();
 		} else {
-			GetComponent<GameControler> ().UpdateTwitterFeed (senderName, imgUrl);
+			StartCoroutine(GetComponent<GameControler> ().UpdateTwitterFeed (senderName, imgUrl));
 			isGameOver = false;
 			SpawnNextPigeon ();
 		}
