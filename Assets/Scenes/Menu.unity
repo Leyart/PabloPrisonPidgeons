@@ -772,12 +772,12 @@ Prefab:
     - target: {fileID: 224006530040563604, guid: 4e86d2e0bc38245dbb033523846f13da,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -142.02222
       objectReference: {fileID: 0}
     - target: {fileID: 224006530040563604, guid: 4e86d2e0bc38245dbb033523846f13da,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 15
+      value: -43.87262
       objectReference: {fileID: 0}
     - target: {fileID: 224006530040563604, guid: 4e86d2e0bc38245dbb033523846f13da,
         type: 2}
@@ -1706,7 +1706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -85}
+  m_AnchoredPosition: {x: -218.04929, y: -174}
   m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1114223258
@@ -1925,6 +1925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193053536}
   - component: {fileID: 1193053535}
+  - component: {fileID: 1193053537}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -2025,6 +2026,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1193053537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1193053534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a903d312234aa4db784d632543be23b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1227198617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,6 +2417,61 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 102290756943107260, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: m_Text
+      value: "\xA1Venga, Pablo!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914507231505752, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: sentences.Array.data[1]
+      value: "\xA1Plata o plomo!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914507231505752, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: sentences.Array.data[2]
+      value: "\xA1Coma mierda!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914507231505752, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: sentences.Array.data[3]
+      value: "\xA1Gringos!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914507231505752, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: sentences.Array.data[4]
+      value: "\xA1G\xFCev\xF3n!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonArrivedSentences.Array.data[0]
+      value: "\xA1Ja ja ja!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonArrivedSentences.Array.data[1]
+      value: "\xA1El \xE9xito es la mejor venganza!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonArrivedSentences.Array.data[2]
+      value: "\xA1Coma mierda!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonKilledSentences.Array.data[0]
+      value: "\xA1Gringos malparidos!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonKilledSentences.Array.data[1]
+      value: "\xA1Mierda!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonKilledSentences.Array.data[2]
+      value: "\xA1Que fracaso!"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
   m_IsPrefabParent: 0
@@ -2448,7 +2515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -33.253464}
+  m_AnchoredPosition: {x: 94.16348, y: -42.915955}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1865117478
