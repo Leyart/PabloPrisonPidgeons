@@ -17,6 +17,7 @@ public class GameControler : MonoBehaviour {
 	private Animator transmittedAnimator;
 	PigeonSpawner spawner;
 	private bool isGameStarted = false;
+	public GameObject twitterFeed;
 
 	void Start () {
 		
@@ -66,6 +67,13 @@ public class GameControler : MonoBehaviour {
 		transmittedAnimator.SetTrigger ("trigger");
 
 	}
+
+	public void UpdateTwitterFeed(string userId, string imageUrl) {
+		twitterFeed.SetActive (true);
+		twitterFeed.GetComponent<TextMesh> ().text = userId;
+	}
+
+
 	public void UpdateTransmissionCount(){
 		Debug.Log (transmittedMessagesCount);
 		transmittedMessagesCount++;

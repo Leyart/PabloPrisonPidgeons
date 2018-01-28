@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 
 public class TextLevelHelper
 {
+	public GameObject twitterView;
 	public static string basePath {
 		get {
 			return "Assets/Levels/";
@@ -79,5 +82,24 @@ public class TextLevelHelper
 
 	public void setImgUrl(string imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	public string getUserId() {
+		return this.userId;
+	}
+
+	public void loadTwitterPicture(Texture2D tex) {
+		LoadImage (this.imgUrl, tex);
+	}
+
+
+	IEnumerator LoadImage(string url, Texture2D tex)
+	{
+		tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
+		using (WWW www = new WWW(url))
+		{
+			yield return www;
+			www.LoadImageIntoTexture(tex);
+		}
 	}
 }

@@ -10,11 +10,14 @@ public class PigeonSpawner : MonoBehaviour {
 	public bool isGameOver;
 	public GameObject explosion;
 	string senderName = "@PabloChannel";
+	string FIXED_PABLO_NAME = "@PabloChannel";
 	string FIXED_PABLO_IMAGE = "http://pbs.twimg.com/profile_images/957266931555491841/pLkxocd2_normal.jpg";
 	string imgUrl = "";
 
 
 	public void loadGameLevel(int level ) {
+		senderName = FIXED_PABLO_NAME;
+		imgUrl = FIXED_PABLO_IMAGE;
 		TwitterController controller = GetComponent<TwitterController> ();
 		TextLevelHelper levelHelper = new TextLevelHelper (level,senderName,FIXED_PABLO_IMAGE);
 		if (!controller.isTweetsLoaded()) {
@@ -43,6 +46,7 @@ public class PigeonSpawner : MonoBehaviour {
 		if (tokens == null || tokens.Count <= 0) {
 			GetComponent<GameControler> ().Winning ();
 		} else {
+			GetComponent<GameControler> ().UpdateTwitterFeed (senderName, imgUrl);
 			isGameOver = false;
 			SpawnNextPigeon ();
 		}
@@ -104,16 +108,5 @@ public class PigeonSpawner : MonoBehaviour {
 	public bool noMorePigeon(){
 		return pigeons.Count <= 0;
 	}
-
-	IEnumerator LoadImage(string url)
-	{
-		Texture2D tex;
-		tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
-		using (WWW www = new WWW(url))
-		{
-			yield return www;
-			www.LoadImageIntoTexture(tex);
-			GetComponent<Renderer>().material.mainTexture = tex;
-		}
-	}
+		
 }
