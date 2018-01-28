@@ -152,6 +152,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4121930888620990}
+  - component: {fileID: 114961486568717068}
   m_Layer: 0
   m_Name: Characters
   m_TagString: Untagged
@@ -686,6 +687,7 @@ MonoBehaviour:
   - Gringos malparidos!
   - Mierda!
   - Que fracaso!
+  textObject: {fileID: 1042638980001148}
 --- !u!114 &114629227842295724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -697,6 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1983936147ef42aabdfca0091778ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textObject: {fileID: 1057310860268002}
 --- !u!114 &114914507231505752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -714,6 +717,7 @@ MonoBehaviour:
   - Coma mierda!
   - Gringos!
   - "G\xFCev\xF3n!"
+  textObject: {fileID: 1373142904533266}
 --- !u!114 &114927341517390494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -731,6 +735,18 @@ MonoBehaviour:
   - That bastard!
   - "Faster Pe\xF1a!"
   - They are flying away!
+  textObject: {fileID: 1972643868847322}
+--- !u!114 &114961486568717068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328570200629712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d378bb3fce3447c78e49f55afe0a694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212429281778678776
 SpriteRenderer:
   m_ObjectHideFlags: 1
