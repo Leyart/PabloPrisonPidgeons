@@ -772,12 +772,12 @@ Prefab:
     - target: {fileID: 224006530040563604, guid: 4e86d2e0bc38245dbb033523846f13da,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -142.02222
       objectReference: {fileID: 0}
     - target: {fileID: 224006530040563604, guid: 4e86d2e0bc38245dbb033523846f13da,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 15
+      value: -43.87262
       objectReference: {fileID: 0}
     - target: {fileID: 224006530040563604, guid: 4e86d2e0bc38245dbb033523846f13da,
         type: 2}
@@ -1706,7 +1706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -85}
+  m_AnchoredPosition: {x: -218.04929, y: -174}
   m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1114223258
@@ -1925,6 +1925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193053536}
   - component: {fileID: 1193053535}
+  - component: {fileID: 1193053537}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -2025,6 +2026,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1193053537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1193053534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a903d312234aa4db784d632543be23b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1227198617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,7 +2515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -33.253464}
+  m_AnchoredPosition: {x: 94.16348, y: -42.915955}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1865117478
