@@ -297,6 +297,8 @@ MonoBehaviour:
   scoreText: {fileID: 673782692}
   transmittedMessages: {fileID: 1755785426}
   levelText: {fileID: 2034207303}
+  redScrollPrefab: {fileID: 1250528760051264, guid: ad5d5342589984b4d960f2f0c1297ff5,
+    type: 2}
   twitterFeed: {fileID: 1357379456}
 --- !u!82 &469053651
 AudioSource:
@@ -472,7 +474,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 673782692}
-  m_Text: 0
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -545,7 +547,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4759748266305220, guid: f071a5f6d215d4b3f83077514b06d1ac, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.8
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4759748266305220, guid: f071a5f6d215d4b3f83077514b06d1ac, type: 2}
       propertyPath: m_LocalPosition.y
@@ -917,7 +919,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1755785426}
-  m_Text: 0
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
