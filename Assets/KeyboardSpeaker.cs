@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class KeyboardSpeaker : MonoBehaviour {
 
+	public GameObject textObject;
+
+
 	// Use this for initialization
 	void Start () {
-		TextMesh textMesh = GetComponentInChildren<TextMesh>();
+	//	TextMesh textMesh = GetComponentInChildren<TextMesh>();
+		TextMesh textMesh = textObject.GetComponent<TextMesh>();
 		textMesh.text = "";
 		KeyboardTyper.keyTyped.AddListener((c) => {
 			string text = textMesh.text;
@@ -21,7 +25,8 @@ public class KeyboardSpeaker : MonoBehaviour {
 	}
 
 	void AddSpaces() {
-		TextMesh textMesh = GetComponentInChildren<TextMesh>();
+		//TextMesh textMesh = GetComponentInChildren<TextMesh>();
+		TextMesh textMesh = textObject.GetComponent<TextMesh>();
 		string text = textMesh.text + " ";
 		if (text.Length > 10) {
 			text = text.Substring(1, 10);
