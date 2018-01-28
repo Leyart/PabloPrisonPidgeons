@@ -91,9 +91,9 @@ public class TwitterMenu : MonoBehaviour
 
 	public void EnterPin(){
 
-		string m_Pin = PinInput.GetComponentInChildren<Text> ().text;
+		string m_Pin = PinInput.GetComponentsInChildren<Text> ()[1].text;
 		
-		StartCoroutine (Twitter.API.GetAccessToken (CONSUMER_KEY, CONSUMER_SECRET, m_RequestTokenResponse.Token, m_PIN,
+		StartCoroutine (Twitter.API.GetAccessToken (CONSUMER_KEY, CONSUMER_SECRET, m_RequestTokenResponse.Token, m_Pin,
 			new Twitter.AccessTokenCallback (this.OnAccessTokenCallback)));
 		PinInput.SetActive (false);
 		UserLogInButton.SetActive (false);
