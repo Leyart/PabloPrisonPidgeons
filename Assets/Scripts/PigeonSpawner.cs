@@ -14,13 +14,14 @@ public class PigeonSpawner : MonoBehaviour {
 	string FIXED_PABLO_IMAGE = "http://pbs.twimg.com/profile_images/957266931555491841/pLkxocd2_normal.jpg";
 	string imgUrl = "";
 
+	public TextAsset[] defaultLevels;
 
 	public void loadGameLevel(int level ) {
 		senderName = FIXED_PABLO_NAME;
 		imgUrl = FIXED_PABLO_IMAGE;
 		bool isLiveFeed = false;
 		TwitterController controller = GetComponent<TwitterController> ();
-		TextLevelHelper levelHelper = new TextLevelHelper (level,senderName,FIXED_PABLO_IMAGE);
+		TextLevelHelper levelHelper = new TextLevelHelper (defaultLevels[level],senderName,FIXED_PABLO_IMAGE);
 		if (!controller.isTweetsLoaded()) {
 			controller.LoadTweets ();
 		}

@@ -18,11 +18,9 @@ public class TextLevelHelper
 	string userId;
 	Texture2D picture;
 
-	public TextLevelHelper(int level, string userId, string imgUrl)
+	public TextLevelHelper(TextAsset level, string userId, string imgUrl)
 	{
-		this.level = level;
-		textPaths = TextLevelHelper.GetPaths ();
-		fullText = this.GetLevelText (level);
+		fullText = level.ToString();
 		if (fullText == "") {
 			tokens = null;
 		}

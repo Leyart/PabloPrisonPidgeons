@@ -249,6 +249,12 @@ MonoBehaviour:
   pigeon: {fileID: 114595485636773776, guid: 08fea7b973b7440ffafbcb496dc5b7ec, type: 2}
   isGameOver: 0
   explosion: {fileID: 1953737596963534, guid: 51c8090f62074482cb79971622b4a207, type: 2}
+  defaultLevels:
+  - {fileID: 4900000, guid: 1d1da0d401fd74d2086674386682bfb5, type: 3}
+  - {fileID: 4900000, guid: 3babd82f6085f494f8c433eff381ab9a, type: 3}
+  - {fileID: 4900000, guid: b5cc7696a2d4f46bdb917feaeaa6a5fd, type: 3}
+  - {fileID: 4900000, guid: 9d899f6cf8fb5410299deed9d5e39c6e, type: 3}
+  - {fileID: 4900000, guid: 0ee9f6bfef13045818fabaadd464d417, type: 3}
 --- !u!114 &469053648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +438,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.1
+  orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
