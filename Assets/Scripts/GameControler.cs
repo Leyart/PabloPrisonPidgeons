@@ -78,6 +78,7 @@ public class GameControler : MonoBehaviour {
 				www.texture,
 				new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0)
 			);
+		twitterFeed.transform.Find("Live").gameObject.SetActive(isLive);
 	}
 
 
