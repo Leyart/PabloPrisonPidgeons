@@ -12,7 +12,7 @@ public class GameControler : MonoBehaviour {
 	public GameObject levelText;
 	private int transmittedMessagesCount;
 	private int level = 1;
-	private int maxNumberToFail = 3;
+	//private int maxNumberToFail = 3;
 	private Animator scoreAnimator;
 	private Animator transmittedAnimator;
 	PigeonSpawner spawner;
@@ -68,18 +68,23 @@ public class GameControler : MonoBehaviour {
 
 	}
 
-	public void UpdateTwitterFeed(string userId, string imageUrl) {
+	public IEnumerator UpdateTwitterFeed(string userId, string imageUrl) {
 		twitterFeed.SetActive (true);
 		twitterFeed.GetComponent<TextMesh> ().text = userId;
+		WWW www = new WWW(imageUrl);
+		yield return www;
+		twitterFeed.GetComponentInChildren<SpriteRenderer>()
+			.sprite = Sprite.Create(
+				www.texture,
+				new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0)
+			);
 	}
 
 
 	public void UpdateTransmissionCount(){
-		Debug.Log (transmittedMessagesCount);
 		transmittedMessagesCount++;
-		Debug.Log (transmittedMessagesCount);
 		UpdateTransmissionView ();
-		if (transmittedMessagesCount >= maxNumberToFail) {
+		if (transmittedMessagesCount >= GamePlayConstants.instance.allowedErrors) {
 			GameOver ();
 		}
 	}

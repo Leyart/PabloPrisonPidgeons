@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f7d97b9d6100844edb50f13662d25b3f
-timeCreated: 1517067707
+timeCreated: 1517137140
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -130,10 +130,10 @@ TextureImporter:
       name: GreenScroll_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 254
-        height: 256
+        x: 23
+        y: 9
+        width: 216
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: GreenScroll_1
       rect:
         serializedVersion: 2
-        x: 254
+        x: 270
         y: 0
-        width: 254
-        height: 256
+        width: 228
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,9 +158,9 @@ TextureImporter:
       name: GreenScroll_2
       rect:
         serializedVersion: 2
-        x: 508
+        x: 515
         y: 0
-        width: 254
+        width: 240
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -172,9 +172,9 @@ TextureImporter:
       name: GreenScroll_3
       rect:
         serializedVersion: 2
-        x: 762
+        x: 769
         y: 0
-        width: 254
+        width: 240
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -186,9 +186,9 @@ TextureImporter:
       name: GreenScroll_4
       rect:
         serializedVersion: 2
-        x: 1016
+        x: 1009
         y: 0
-        width: 254
+        width: 260
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
