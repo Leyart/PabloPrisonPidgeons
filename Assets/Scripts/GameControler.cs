@@ -12,7 +12,7 @@ public class GameControler : MonoBehaviour {
 	public GameObject levelText;
 	private int transmittedMessagesCount;
 	private int level = 1;
-	private int maxNumberToFail = 3;
+	//private int maxNumberToFail = 3;
 	private Animator scoreAnimator;
 	private Animator transmittedAnimator;
 	PigeonSpawner spawner;
@@ -75,11 +75,9 @@ public class GameControler : MonoBehaviour {
 
 
 	public void UpdateTransmissionCount(){
-		Debug.Log (transmittedMessagesCount);
 		transmittedMessagesCount++;
-		Debug.Log (transmittedMessagesCount);
 		UpdateTransmissionView ();
-		if (transmittedMessagesCount >= maxNumberToFail) {
+		if (transmittedMessagesCount >= GamePlayConstants.instance.allowedErrors) {
 			GameOver ();
 		}
 	}
