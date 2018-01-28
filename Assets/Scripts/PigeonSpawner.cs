@@ -21,36 +21,40 @@ public class PigeonSpawner : MonoBehaviour {
 		imgUrl = FIXED_PABLO_IMAGE;
 		bool isLiveFeed = false;
 		TwitterController controller = GetComponent<TwitterController> ();
-		TextLevelHelper levelHelper = new TextLevelHelper (defaultLevels[level],senderName,FIXED_PABLO_IMAGE);
-		if (!controller.isTweetsLoaded()) {
-			controller.LoadTweets ();
-		}
-		if (controller.isAuthenticated && level % 2 == 1) {
-			if (controller.tweets.Count > 0) {
-				isLiveFeed = true;
-				int index = Random.Range (0, controller.tweets.Count - 1);
-				senderName = controller.tweets [index].username;
-				imgUrl = controller.tweets [index].image;
-				imgUrl = imgUrl.Replace ("\\", "");
-				tokens = new List<string> (levelHelper.GetTokens (controller.tweets[index].text));
-				levelHelper.setUserId (senderName);
-				controller.tweets.RemoveAt (index);
+		if (level < defaultLevels.Length) {
+			TextLevelHelper levelHelper = new TextLevelHelper (defaultLevels[level],senderName,FIXED_PABLO_IMAGE);
+			if (!controller.isTweetsLoaded()) {
+				controller.LoadTweets ();
+			}
+			if (controller.isAuthenticated && level % 2 == 1) {
+				if (controller.tweets.Count > 0) {
+					isLiveFeed = true;
+					int index = Random.Range (0, controller.tweets.Count - 1);
+					senderName = controller.tweets [index].username;
+					imgUrl = controller.tweets [index].image;
+					imgUrl = imgUrl.Replace ("\\", "");
+					tokens = new List<string> (levelHelper.GetTokens (controller.tweets[index].text));
+					levelHelper.setUserId (senderName);
+					controller.tweets.RemoveAt (index);
+				} else {
+					string[] newTokens = levelHelper.GetTokens ();
+					tokens = new List<string> (newTokens);
+				}
 			} else {
 				string[] newTokens = levelHelper.GetTokens ();
-				tokens = new List<string> (newTokens);
+				if (newTokens != null) {
+					tokens = new List<string> (newTokens);
+				}
+			}
+			if (tokens == null || tokens.Count <= 0) {
+				GetComponent<GameControler> ().Winning ();
+			} else {
+				StartCoroutine(GetComponent<GameControler> ().UpdateTwitterFeed (senderName, imgUrl,isLiveFeed));
+				isGameOver = false;
+				SpawnNextPigeon ();
 			}
 		} else {
-			string[] newTokens = levelHelper.GetTokens ();
-			if (newTokens != null) {
-				tokens = new List<string> (newTokens);
-			}
-		}
-		if (tokens == null || tokens.Count <= 0) {
 			GetComponent<GameControler> ().Winning ();
-		} else {
-			StartCoroutine(GetComponent<GameControler> ().UpdateTwitterFeed (senderName, imgUrl,isLiveFeed));
-			isGameOver = false;
-			SpawnNextPigeon ();
 		}
 	}
 
