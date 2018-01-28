@@ -10,7 +10,7 @@ public class PigeonSpawner : MonoBehaviour {
 	public bool isGameOver;
 	public GameObject explosion;
 	string senderName = "@PabloChannel";
-	string FIXED_PABLO_NAME = "@PabloChannel";
+	string FIXED_PABLO_NAME = "Hablo Escobar";
 	string FIXED_PABLO_IMAGE = "http://pbs.twimg.com/profile_images/957266931555491841/pLkxocd2_normal.jpg";
 	string imgUrl = "";
 
