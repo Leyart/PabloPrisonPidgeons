@@ -21,7 +21,6 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 	// 2 elements for the rotation and 1 for the scaling.
 	public Vector3 rotation;
 	public string text;
-	System.Guid id;
 	GameObject path;
 	public StringReader reader;
 	ArrayList pathPoints;
@@ -46,7 +45,6 @@ public class Pigeon : MonoBehaviour, IKillable, IFlyable{
 		Vector2 posRU = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
 		Vector2 startPos = new Vector2 (posLB.x,  Random.Range(posLB.y, posRU.y));
 		this.transform.position = startPos;
-		this.id =  System.Guid.NewGuid();
 		pathPoints = GetComponentInChildren<CatmullRomSpline>().path;
 	}
 

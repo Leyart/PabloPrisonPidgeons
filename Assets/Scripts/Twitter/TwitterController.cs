@@ -57,6 +57,7 @@ public class TwitterController : MonoBehaviour
             {
 				text = "You need to register your game or application first.";
             }
+			text.IsNormalized();
         }
 			
     }

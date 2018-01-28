@@ -23,6 +23,7 @@ public class CatmullRomSpline : MonoBehaviour
 
 		Vector2 minP = posLB + new Vector2 (1, 0);
 		Vector2 maxP = posRU -new Vector2 (-1, 0);
+		maxP.ToString();
 		float numberOfPoints = Random.Range (3, 10);
 		float distance = posRU.x - posLB.x;
 		float deltaDistance = distance / (numberOfPoints+1);
@@ -86,7 +87,7 @@ public class CatmullRomSpline : MonoBehaviour
 
 		//The start position of the line
 		Vector2 lastPos = p1;
-
+		lastPos.ToString ();
 		//The spline's resolution
 		//Make sure it's is adding up to 1, so 0.3 will give a gap, but 0.2 will work
 		float resolution = 0.2f;

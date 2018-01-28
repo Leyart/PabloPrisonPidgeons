@@ -34,12 +34,8 @@ public class TwitterMenu : MonoBehaviour
     Twitter.AccessTokenResponse m_AccessTokenResponse;
 
     string m_PIN = "Please enter your PIN here.";
-    string m_Tweet = "Please enter your tweet here.";
-	bool isAuthenticated = false;
 	bool isActive = false;
-
-	string hashtag;
-	int hashtagNum;
+	bool isAuthenticated = false;
 
 	// Use this for initialization
 	void Start() 
@@ -135,6 +131,7 @@ public class TwitterMenu : MonoBehaviour
             log += "\n    ScreenName : " + m_AccessTokenResponse.ScreenName;
             log += "\n    Token : " + m_AccessTokenResponse.Token;
             log += "\n    TokenSecret : " + m_AccessTokenResponse.TokenSecret;
+			log += "\n    isAuthenticated : " + this.isAuthenticated;
             print(log);
         }
 
@@ -183,41 +180,5 @@ public class TwitterMenu : MonoBehaviour
             print("OnAccessTokenCallback - failed.");
         }
     }
-
-    void OnPostTweet(bool success)
-    {
-        print("OnPostTweet - " + (success ? "succedded." : "failed."));
-    }
-
-	void OnGetTimeline(bool success)
-	{
-		print("OnGetTimeline - " + (success ? "succedded." : "failed."));
-	}
-
-	void OnGetHashtag(bool success, string[] retrieved)
-    {
-        print("OnGetHashtag - " + (success ? "SUCCESS" : "FAIL"));
-    }
-
-    public void StartGetHashtag()
-    {
-        string text = hashtag;
-
-        if( string.IsNullOrEmpty(text) )
-        {
-            Debug.LogWarning("StartGetHashtag: no hashtag.");
-            return;
-        }
-
-        int num = Convert.ToInt32( hashtagNum );
-
-        if( num < 1 )
-        {
-            Debug.LogWarning("StartGetHashtag: how many to get?");
-            return;
-        }
-
-        StartCoroutine(Twitter.API.GetHashtag(hashtag, num, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
-                       new Twitter.GetTimelineCallback(this.OnGetHashtag)));
-    }
+		
 }
