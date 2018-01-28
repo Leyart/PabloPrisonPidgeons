@@ -851,6 +851,28 @@ Prefab:
       propertyPath: m_ClearFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1555571657050268, guid: 8a501ff6267fa4882ab21dd4062adedd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1746517105444614, guid: 8a501ff6267fa4882ab21dd4062adedd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102601509956559474, guid: 8a501ff6267fa4882ab21dd4062adedd,
+        type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 102668974338554632, guid: 8a501ff6267fa4882ab21dd4062adedd,
+        type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631422640303394, guid: 8a501ff6267fa4882ab21dd4062adedd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114070996957875346, guid: 8a501ff6267fa4882ab21dd4062adedd, type: 2}
     - {fileID: 114000115369242348, guid: 8a501ff6267fa4882ab21dd4062adedd, type: 2}
@@ -1368,7 +1390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2034207304
 Transform:
   m_ObjectHideFlags: 0
@@ -1391,7 +1413,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2034207303}
-  m_Text: 1
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 2
   m_LineSpacing: 1
