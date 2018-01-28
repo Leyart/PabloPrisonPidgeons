@@ -292,8 +292,10 @@ namespace Twitter
 
 			WWW web = new WWW(GetTimelineURL, null, headers);
 			WaitForSeconds w;
-			while (!web.isDone)
-				w = new WaitForSeconds(0.1f);
+			while (!web.isDone) {
+				w = new WaitForSeconds (0.1f);
+				w.ToString ();
+			}
 			Debug.Log("GetTimeLineForUser - " + web.text);
 
 
@@ -371,8 +373,10 @@ namespace Twitter
 
 			WWW web = new WWW(GetTimelineURL, null, headers);
 			WaitForSeconds w;
-			while (!web.isDone)
-				w = new WaitForSeconds(0.1f);
+			while (!web.isDone) {
+				w = new WaitForSeconds (0.1f);
+				w.ToString ();
+			}
 			Debug.Log("GetTimeLineForUser - " + web.text);
 
 
@@ -460,8 +464,10 @@ namespace Twitter
 
                 WWW web = new WWW(url, null, headers);
 				WaitForSeconds w;
-				while (!web.isDone)
-					w = new WaitForSeconds(0.1f);
+				while (!web.isDone) {
+					w = new WaitForSeconds (0.1f);
+					w.ToString ();
+				}
 				Debug.Log("GetTimeline - " + web.text);
 
 

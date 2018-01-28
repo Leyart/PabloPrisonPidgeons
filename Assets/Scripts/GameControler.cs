@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameControler : MonoBehaviour {
 
@@ -37,7 +38,7 @@ public class GameControler : MonoBehaviour {
 
 	public void GameOver(){
 		GetComponent<PigeonSpawner> ().GameOver ();
-		Application.LoadLevel (0);
+		SceneManager.LoadScene (0);
 	}
 		
 
