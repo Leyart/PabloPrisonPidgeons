@@ -68,7 +68,7 @@ public class GameControler : MonoBehaviour {
 
 	}
 
-	public IEnumerator UpdateTwitterFeed(string userId, string imageUrl) {
+	public IEnumerator UpdateTwitterFeed(string userId, string imageUrl, bool isLive) {
 		twitterFeed.SetActive (true);
 		twitterFeed.GetComponent<TextMesh> ().text = userId;
 		WWW www = new WWW(imageUrl);

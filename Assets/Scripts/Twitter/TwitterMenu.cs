@@ -33,7 +33,6 @@ public class TwitterMenu : MonoBehaviour
     Twitter.RequestTokenResponse m_RequestTokenResponse;
     Twitter.AccessTokenResponse m_AccessTokenResponse;
 
-    string m_PIN = "Please enter your PIN here.";
 	bool isActive = false;
 	bool isAuthenticated = false;
 

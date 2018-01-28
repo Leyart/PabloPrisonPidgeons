@@ -16,7 +16,6 @@ public class TextLevelHelper
 	string[] tokens;
 	string[] textPaths;
 	string userId;
-	string imgUrl;
 	Texture2D picture;
 
 	public TextLevelHelper(int level, string userId, string imgUrl)
@@ -79,10 +78,7 @@ public class TextLevelHelper
 	public void setUserId(string userId) {
 		this.userId = userId;
 	}
-
-	public void setImgUrl(string imgUrl) {
-		this.imgUrl = imgUrl;
-	}
+		
 
 	public string getUserId() {
 		return this.userId;
