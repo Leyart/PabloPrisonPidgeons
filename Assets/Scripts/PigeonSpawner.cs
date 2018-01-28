@@ -7,7 +7,7 @@ public class PigeonSpawner : MonoBehaviour {
 	List<Pigeon> pigeons = new List<Pigeon>();
 	public Pigeon pigeon;
 	List<string> tokens;
-	bool gameOver;
+	public bool isGameOver;
 	public GameObject explosion;
 
 	public void loadGameLevel(int level ) {
@@ -31,7 +31,7 @@ public class PigeonSpawner : MonoBehaviour {
 		if (tokens == null || tokens.Count <= 0) {
 			GetComponent<GameControler> ().Winning ();
 		} else {
-			gameOver = false;
+			isGameOver = false;
 			SpawnNextPigeon ();
 		}
 	}
@@ -65,7 +65,7 @@ public class PigeonSpawner : MonoBehaviour {
 			});
 			pigeon.PigeonHit.AddListener((life) => {
 
-				if (life == 2 && !gameOver) {
+				if (life == 2 && !isGameOver) {
 					SpawnNextPigeon();
 				}
 			});
@@ -80,11 +80,7 @@ public class PigeonSpawner : MonoBehaviour {
 	}
 
 	public void GameOver(){
-		gameOver = true;
-		foreach (Pigeon pigeon in pigeons) {
-			pigeon.reader.GameOver ();
-			pigeon.Kill ();
-		}
+		isGameOver = true;
 	}
 
 	void RemovePigeon(Pigeon pigeon) {

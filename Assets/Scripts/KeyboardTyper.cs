@@ -9,7 +9,6 @@ public class KeyboardTyper : MonoBehaviour {
 	public class KeyTypedEvent : UnityEvent<char> {}
 
 	public static KeyTypedEvent keyTyped = new KeyTypedEvent();
-
 	// Use this for initialization
 	void Awake () {
 		
@@ -26,4 +25,5 @@ public class KeyboardTyper : MonoBehaviour {
 			}
 		}
 	}
+
 }

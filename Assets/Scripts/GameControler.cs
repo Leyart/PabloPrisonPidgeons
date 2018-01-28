@@ -8,6 +8,7 @@ public class GameControler : MonoBehaviour {
 	public GameObject scoreText;
 	private int score;
 	public GameObject transmittedMessages;
+	public GameObject levelText;
 	public Canvas canvas;
 	private int transmittedMessagesCount;
 	private int level = 1;
@@ -23,10 +24,11 @@ public class GameControler : MonoBehaviour {
 		isGameStarted = true;
 		canvas.enabled = false;
 		spawner = GetComponent<PigeonSpawner> ();
+		level = 1;
+		UpdateLevel ();
 		spawner.loadGameLevel (level);
 		score = 0;
 		transmittedMessagesCount = 0;
-
 		scoreAnimator = scoreText.GetComponentInChildren<Animator> ();
 		scoreAnimator.SetBool ("isGreen", true);
 		transmittedAnimator = transmittedMessages.GetComponentInChildren<Animator> ();
@@ -76,9 +78,12 @@ public class GameControler : MonoBehaviour {
 			GameOver ();
 		}
 	}
-
+	void UpdateLevel(){
+		levelText.GetComponent<TextMesh> ().text = level.ToString();
+	}
 	public void NextLevel() {
 		level++;
+		UpdateLevel ();
 		if (level >= 10) {
 			Winning ();
 		} else {
