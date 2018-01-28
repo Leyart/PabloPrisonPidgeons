@@ -50,9 +50,9 @@ public class StringReader : MonoBehaviour {
 		GetComponentInChildren<TextMesh> ().fontSize = 20;
 		List<UnityEngine.Color> colors = new List<Color> ();
 		colors.Add (Color.red);
-		colors.Add (Color.white);
-		colors.Add (Color.green);
-		GetComponentInChildren<TextMesh> ().color = colors[Random.Range(1,colors.Count)-1];
+		colors.Add (Color.black);
+		colors.Add (Color.blue);
+		GetComponentInChildren<TextMesh> ().color = colors[Random.Range(1,colors.Count)];
 		KeyboardTyper.keyTyped.AddListener(MatchCharacter);
 	}
     
