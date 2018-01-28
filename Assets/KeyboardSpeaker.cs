@@ -9,7 +9,6 @@ public class KeyboardSpeaker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	//	TextMesh textMesh = GetComponentInChildren<TextMesh>();
 		TextMesh textMesh = textObject.GetComponent<TextMesh>();
 		textMesh.text = "";
 		KeyboardTyper.keyTyped.AddListener((c) => {
@@ -25,7 +24,6 @@ public class KeyboardSpeaker : MonoBehaviour {
 	}
 
 	void AddSpaces() {
-		//TextMesh textMesh = GetComponentInChildren<TextMesh>();
 		TextMesh textMesh = textObject.GetComponent<TextMesh>();
 		string text = textMesh.text + " ";
 		if (text.Length > 10) {
@@ -33,5 +31,5 @@ public class KeyboardSpeaker : MonoBehaviour {
 		}
 		textMesh.text = text;
 	}
-	
+
 }
