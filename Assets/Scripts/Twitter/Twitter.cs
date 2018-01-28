@@ -482,6 +482,8 @@ namespace Twitter
 						string realHash = "#" + key;
 						text=text.Replace (realHash, "");
 					}
+					text = text.Replace ("RT @",""); 
+					text = RemoveSpecialCharacters (text);
 					toReturn[i]=text.Trim ();
 					Debug.Log("Tweet #" + i +" "+ toReturn[i]);
 				}
@@ -511,6 +513,12 @@ namespace Twitter
 	               
 				yield return web;
             }
+
+
+		public static string RemoveSpecialCharacters(string str)
+		{
+			return Regex.Replace(str, "[^a-zA-Z0-9 .]+", "");
+		}
 
         #endregion
 
@@ -713,4 +721,6 @@ namespace Twitter
 
         #endregion
     }
+
+
 }
