@@ -2405,6 +2405,61 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 102290756943107260, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: m_Text
+      value: "\xA1Venga, Pablo!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914507231505752, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: sentences.Array.data[1]
+      value: "\xA1Plata o plomo!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914507231505752, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: sentences.Array.data[2]
+      value: "\xA1Coma mierda!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914507231505752, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: sentences.Array.data[3]
+      value: "\xA1Gringos!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914507231505752, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: sentences.Array.data[4]
+      value: "\xA1G\xFCev\xF3n!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonArrivedSentences.Array.data[0]
+      value: "\xA1Ja ja ja!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonArrivedSentences.Array.data[1]
+      value: "\xA1El \xE9xito es la mejor venganza!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonArrivedSentences.Array.data[2]
+      value: "\xA1Coma mierda!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonKilledSentences.Array.data[0]
+      value: "\xA1Gringos malparidos!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonKilledSentences.Array.data[1]
+      value: "\xA1Mierda!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114075536230387004, guid: 47678d343488a4cff95bf1f5344584e3,
+        type: 2}
+      propertyPath: pigeonKilledSentences.Array.data[2]
+      value: "\xA1Que fracaso!"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47678d343488a4cff95bf1f5344584e3, type: 2}
   m_IsPrefabParent: 0
