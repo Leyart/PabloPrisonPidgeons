@@ -9,20 +9,16 @@ public class GameControler : MonoBehaviour {
 	private int score;
 	public GameObject transmittedMessages;
 	public GameObject levelText;
-	public Canvas canvas;
 	private int transmittedMessagesCount;
 	private int level = 1;
 	private int maxNumberToFail = 3;
-	public GameObject gameOver;
 	private Animator scoreAnimator;
 	private Animator transmittedAnimator;
 	PigeonSpawner spawner;
 	private bool isGameStarted = false;
 
-	public void StartGame(){
-		gameOver.SetActive (false);
-		isGameStarted = true;
-		canvas.enabled = false;
+	void Start () {
+		
 		spawner = GetComponent<PigeonSpawner> ();
 		level = 1;
 		UpdateLevel ();
@@ -35,13 +31,13 @@ public class GameControler : MonoBehaviour {
 		transmittedAnimator.SetBool ("isRed", true);
 		UpdateScoreView ();
 		UpdateTransmissionView ();
+		isGameStarted = true;
 
 	}
 
 	public void GameOver(){
 		GetComponent<PigeonSpawner> ().GameOver ();
-		canvas.enabled = true;
-		gameOver.SetActive (true);
+		Application.LoadLevel (0);
 	}
 		
 
