@@ -27,7 +27,7 @@ public class TwitterController : MonoBehaviour
 
 	bool tweetsLoaded = false;
 	public bool isAuthenticated = false;
-	public List<String> tweets;
+	public List<Twitter.TweetStructure> tweets = new List<Twitter.TweetStructure>();
 
 	// Use this for initialization
 	void Start() 
@@ -100,11 +100,11 @@ public class TwitterController : MonoBehaviour
 	}
 
     
-	void OnGetTimeline(bool success, string[] tweets)
+	void OnGetTimeline(bool success,  List<Twitter.TweetStructure> tweets)
 	{
 		print("OnGetTimeline - " + (success ? "succedded." : "failed."));
 		this.tweetsLoaded = true;
-		this.tweets = new List<String> (tweets);
+		this.tweets = tweets;
 	}
 		
 }

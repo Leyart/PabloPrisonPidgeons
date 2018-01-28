@@ -9,18 +9,26 @@ public class PigeonSpawner : MonoBehaviour {
 	List<string> tokens;
 	public bool isGameOver;
 	public GameObject explosion;
+	string senderName = "@PabloChannel";
+	string FIXED_PABLO_IMAGE = "http://pbs.twimg.com/profile_images/957266931555491841/pLkxocd2_normal.jpg";
+	string imgUrl = "";
+
 
 	public void loadGameLevel(int level ) {
 		TwitterController controller = GetComponent<TwitterController> ();
-		TextLevelHelper levelHelper = new TextLevelHelper (level);
+		TextLevelHelper levelHelper = new TextLevelHelper (level,senderName,FIXED_PABLO_IMAGE);
 		if (!controller.isTweetsLoaded()) {
 			controller.LoadTweets ();
 		}
 		if (controller.isAuthenticated && level % 2 == 1) {
 			if (controller.tweets.Count > 0) {
 				int index = Random.Range (0, controller.tweets.Count - 1);
-
-				tokens = new List<string> (levelHelper.GetTokens (controller.tweets[index]));
+				senderName = controller.tweets [index].username;
+				imgUrl = controller.tweets [index].image;
+				imgUrl = imgUrl.Replace ("\\", "");
+				tokens = new List<string> (levelHelper.GetTokens (controller.tweets[index].text));
+				levelHelper.setUserId (senderName);
+				levelHelper.setImgUrl (imgUrl);
 				controller.tweets.RemoveAt (index);
 			} else {
 				tokens = new List<string> (levelHelper.GetTokens ());
@@ -45,37 +53,38 @@ public class PigeonSpawner : MonoBehaviour {
 		if (tokens.Count > 0) {
 			string word = tokens[0];
 			tokens.RemoveAt(0);
+			if (!string.IsNullOrEmpty (word)) {
+				Pigeon pigeon = Instantiate<Pigeon> (this.pigeon);
 
-			Pigeon pigeon = Instantiate<Pigeon>(this.pigeon);
+				// events
+				pigeon.PigeonArrived.AddListener ((id) => {
+					RemovePigeon (pigeon);
+					GetComponent<GameControler> ().UpdateTransmissionCount ();
+				});
+				pigeon.PigeonKilled.AddListener ((id) => {
+					GameObject e = Instantiate<GameObject> (this.explosion);
+					e.transform.position = pigeon.transform.position;
+					StartCoroutine (waitThenCallback (2, () => {
+						Destroy (e);
+					}));
 
-			// events
-			pigeon.PigeonArrived.AddListener((id) => {
-				RemovePigeon(pigeon);
-				GetComponent<GameControler>().UpdateTransmissionCount();
-			});
-			pigeon.PigeonKilled.AddListener((id) => {
-				GameObject e = Instantiate<GameObject>(this.explosion);
-				e.transform.position = pigeon.transform.position;
-				StartCoroutine(waitThenCallback(2, () => {
-					Destroy(e);
-				}));
+					RemovePigeon (pigeon);
+					GetComponent<GameControler> ().UpdateScoreCount ();
+				});
+				pigeon.PigeonHit.AddListener ((life) => {
 
-				RemovePigeon(pigeon);
-				GetComponent<GameControler>().UpdateScoreCount();
-			});
-			pigeon.PigeonHit.AddListener((life) => {
+					if (life == 2 && !isGameOver) {
+						SpawnNextPigeon ();
+					}
+				});
 
-				if (life == 2 && !isGameOver) {
-					SpawnNextPigeon();
-				}
-			});
+				// tracking
+				pigeons.Add (pigeon);
 
-			// tracking
-			pigeons.Add (pigeon);
+				pigeon.SendPigeon (word);
 
-			pigeon.SendPigeon(word);
-
-			GetComponent<AudioSource>().Play();
+				GetComponent<AudioSource> ().Play ();
+			}
 		}
 	}
 
@@ -90,5 +99,17 @@ public class PigeonSpawner : MonoBehaviour {
 
 	public bool noMorePigeon(){
 		return pigeons.Count <= 0;
+	}
+
+	IEnumerator LoadImage(string url)
+	{
+		Texture2D tex;
+		tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
+		using (WWW www = new WWW(url))
+		{
+			yield return www;
+			www.LoadImageIntoTexture(tex);
+			GetComponent<Renderer>().material.mainTexture = tex;
+		}
 	}
 }

@@ -27,10 +27,17 @@ namespace Twitter
         public string ScreenName { get; set; }
     }
 
+	public class TweetStructure
+	{
+		public string text { get; set; }
+		public string username { get; set; }
+		public string image { get; set; }
+	}
+
     public delegate void RequestTokenCallback(bool success, RequestTokenResponse response);
     public delegate void AccessTokenCallback(bool success, AccessTokenResponse response);
     public delegate void PostTweetCallback(bool success);
-	public delegate void GetTimelineCallback(bool success, string[] tweets);
+	public delegate void GetTimelineCallback(bool success, List<TweetStructure> tweets);
 
     public class API
     {
@@ -324,7 +331,8 @@ namespace Twitter
 				}
 				else
 				{
-					callback(true,toReturn);
+					//Needs to be a twitter structure now
+					//callback(true,toReturn);
 				}
 			}
 
@@ -408,7 +416,8 @@ namespace Twitter
 				}
 				else
 				{
-					callback(true,toReturn);
+					//needs to be a twitter structure now
+					//callback(true,toReturn);
 				}
 			}
 
@@ -470,9 +479,8 @@ namespace Twitter
 				}
 				Debug.Log("GetTimeline - " + web.text);
 
-
+			List<TweetStructure> tweetsToReturn = new List<TweetStructure>();
 				var tweets = JSON.Parse(web.text);
-			    string[] toReturn = new string[tweets["statuses"].Count];
 				Debug.Log("# of Tweets: " + tweets["statuses"].Count);
 				for (int i=0; i< tweets["statuses"].Count; i++)
 				{
@@ -484,8 +492,12 @@ namespace Twitter
 					}
 					text = text.Replace ("RT @",""); 
 					text = RemoveSpecialCharacters (text);
-					toReturn[i]=text.Trim ();
-					Debug.Log("Tweet #" + i +" "+ toReturn[i]);
+					TweetStructure toAdd = new TweetStructure();
+					toAdd.text = text.Trim();
+					toAdd.username= tweets["statuses"] [i] ["user"]["name"];
+					toAdd.image= tweets["statuses"] [i] ["user"]["profile_image_url"];
+					tweetsToReturn.Add(toAdd);
+					Debug.Log("Tweet #" + i +" "+ tweetsToReturn.ToString());
 				}
 
 	                //WWW web = new WWW(GetTimelineURL, dummmy, headers);
@@ -507,7 +519,8 @@ namespace Twitter
 	                    }
 	                    else
 	                    {
-						callback(true,toReturn);
+							//needs to be a twitter structure
+							callback(true,tweetsToReturn);
 	                    }
 	                }
 	               
