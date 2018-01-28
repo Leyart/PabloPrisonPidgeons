@@ -87,19 +87,4 @@ public class TextLevelHelper
 	public string getUserId() {
 		return this.userId;
 	}
-
-	public void loadTwitterPicture(Texture2D tex) {
-		LoadImage (this.imgUrl, tex);
-	}
-
-
-	IEnumerator LoadImage(string url, Texture2D tex)
-	{
-		tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
-		using (WWW www = new WWW(url))
-		{
-			yield return www;
-			www.LoadImageIntoTexture(tex);
-		}
-	}
 }

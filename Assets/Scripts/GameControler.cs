@@ -99,4 +99,15 @@ public class GameControler : MonoBehaviour {
 	public void Winning() {
 		SceneManager.LoadScene (3);
 	}
+
+
+	IEnumerator LoadImage(string url, Texture2D tex)
+	{
+		tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
+		using (WWW www = new WWW(url))
+		{
+			yield return www;
+			www.LoadImageIntoTexture(tex);
+		}
+	}
 }
